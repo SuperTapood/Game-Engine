@@ -1,5 +1,24 @@
-# Game Engine
+# Python Game Engine
 
-the game engine i will be using whenever I make games in python. this is being made in order
-to shorten development time on my side, and direct all of the annoying calculations and such
-to this third party library. If you can find some use for it and want to use it, be my guest.
+__note: game engine requires the while True loop to work there is no way around it.__
+
+documentation template - """type param - purpose"""
+
+# change log:
+
+# version 0.1
+- added a fill function
+- added a event handler (overriding instructions are documented)
+- added terminate (cooler than quit) and enabling exit-saves (overridable)
+- added update screen
+- added text function
+- added button function
+- added check for click function
+- added an image load function
+- added a background set
+- added blit function
+- added a resize function
+- added middle constants
+- added button and text together (in a seperate function)
+- added fit function for background
+- documented changes

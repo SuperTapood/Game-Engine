@@ -1,15 +1,25 @@
-## this is used to test the engine and see if it works ##
-from screen import Screen
 from colors import *
+from screen import Screen
 import pygame
-from random import randint as random
+from time import time
+from time import sleep as wait
+
+class Screen(Screen):
+	def eventHandler(self):
+		## override ##
+		for event in pygame.event.get():
+			self.__quitHandle(event)
+		self.update()
 
 if __name__ == "__main__":
-	scr = Screen(400, 400)
+	scr = Screen(500, 500, BLACK, "Window")
+	scr.fitForBG(r"folder\\bg.png")
 	while True:
-		scr.addRect(random(0, 200), random(0, 200), random(0, 200), random(0, 200), WHITE)
-		scr.blit()
-		for event in pygame.event.get():
-			scr.update(event)
-		pygame.display.update()
-		scr.empty()
+		start = time()
+		scr.eventHandler()
+		scr.addText("Hello World", scr.MIDDLEX, scr.MIDDLEY, 50)
+		btn = scr.addTextButton("Quit", 50, 50, 70, BLACK, WHITE)
+		if scr.checkClick(btn):
+			scr.terminate()
+		end = time() - start
+		print(f"loop took {end} seconds")
