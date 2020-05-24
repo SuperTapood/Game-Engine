@@ -1,5 +1,6 @@
 import pygame
 from colors import *
+from sprite import Sprite
 
 
 class Screen:
@@ -11,6 +12,7 @@ class Screen:
 		str caption - the caption of the window
 		"""
 		pygame.init()
+		self.__sprites = []
 		self.display = pygame.display.set_mode((x, y))
 		self.MIDDLEX = x // 2
 		self.MIDDLEY = y // 2
@@ -30,6 +32,7 @@ class Screen:
 
 	def eventHandler(self):
 		## override this function in order to add events ##
+		self.fill(self.color)
 		for event in pygame.event.get():
 			self.__quitHandle(event)
 		self.update()
@@ -47,6 +50,7 @@ class Screen:
 	def update(self):
 		# update the display
 		pygame.display.update()
+		self.updateSprites()
 		return
 
 	def __quitHandle(self, event):
@@ -187,3 +191,31 @@ class Screen:
 		# draw the text
 		textRect = self.addText(txt, x, y, size, txtColor, center=False)
 		return rect
+
+	def addSprite(self, spriteType, sprite, x, y):
+		if spriteType == "img":
+			sprite = self.__loadImage(sprite)
+		s = Sprite(self.display, sprite, x, y)
+		self.__sprites.append(s)
+		return s
+
+	def removeSprite(self, sprite):
+		self.__sprites.remove(sprite)
+		return
+
+	def removeAllSprites(self):
+		self.__sprites = []
+		return
+
+	def removeMultipleSprites(self, *args):
+		for sprite in args:
+			if sprite in self.__sprites:
+				self.removeSprite(sprite)
+			else:
+				exit(f"EngineError: sprite {sprite} not found")
+		return
+
+	def updateSprites(self):
+		for sprite in self.__sprites:
+			sprite.update()
+		return

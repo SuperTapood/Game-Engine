@@ -6,9 +6,18 @@ documentation template - """type param - purpose"""
 
 # change log:
 
+# version 0.2
+- added overriding decorator
+- added sprite (for moving images)
+- added blit for the sprite
+- added sprite movement
+- added sprite deletion
+- added multiple sprite deletion and even all of them
+- added delay for the sprite movement (without harming FPS)
+
 # version 0.1
 - added a fill function
-- added a event handler (overriding instructions are documented)
+- added a event handler (overridable)
 - added terminate (cooler than quit) and enabling exit-saves (overridable)
 - added update screen
 - added text function
