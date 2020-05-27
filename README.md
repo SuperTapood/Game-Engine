@@ -4,7 +4,11 @@ __note: game engine requires the while True loop to work there is no way around 
 
 documentation template - """type param - purpose"""
 
+Usage of this pygame game engine requires quite a bit of python knowledge
+
 # change log:
+
+# version 0.3
 
 # version 0.2
 - added overriding decorator

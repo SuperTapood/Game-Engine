@@ -1,6 +1,7 @@
 import pygame
 from colors import *
 from sprite import Sprite
+from inputField import InputField
 
 
 class Screen:
@@ -13,6 +14,7 @@ class Screen:
 		"""
 		pygame.init()
 		self.__sprites = []
+		self.__inputFields = []
 		self.display = pygame.display.set_mode((x, y))
 		self.MIDDLEX = x // 2
 		self.MIDDLEY = y // 2
@@ -32,7 +34,6 @@ class Screen:
 
 	def eventHandler(self):
 		## override this function in order to add events ##
-		self.fill(self.color)
 		for event in pygame.event.get():
 			self.__quitHandle(event)
 		self.update()
@@ -218,4 +219,19 @@ class Screen:
 	def updateSprites(self):
 		for sprite in self.__sprites:
 			sprite.update()
+		return
+
+	def moveSprite(self, index, factor, x, y):
+		self.__sprites[index].move(factor, x, y)
+		return
+
+	def addInputField(self, x, y, size, color):
+		return InputField(self.display, (x, y), color, size)
+
+	def updateField(self, field):
+		field.checkClick()
+		text = field.text
+		if len(text) < 8:
+			text = "        "
+		self.addTextButton(text, field.x, field.y, field.size, BLACK, WHITE)
 		return

@@ -8,7 +8,6 @@ class Sprite:
 		self.sprite = sprite
 		self.window = window
 		self.moveStart = time()
-		self.__blit()
 		return
 
 	def __blit(self):
