@@ -2,6 +2,7 @@ import pygame
 from colors import *
 from sprite import Sprite
 from inputField import InputField
+import os
 
 
 class Screen:
@@ -14,7 +15,7 @@ class Screen:
 		"""
 		pygame.init()
 		self.__sprites = []
-		self.__inputFields = []
+		self.__fields = []
 		self.display = pygame.display.set_mode((x, y))
 		self.MIDDLEX = x // 2
 		self.MIDDLEY = y // 2
@@ -51,7 +52,9 @@ class Screen:
 	def update(self):
 		# update the display
 		pygame.display.update()
+		self.fill(self.color)
 		self.updateSprites()
+		self.updateFields()
 		return
 
 	def __quitHandle(self, event):
@@ -194,6 +197,11 @@ class Screen:
 		return rect
 
 	def addSprite(self, spriteType, sprite, x, y):
+		"""
+		str spriteType - the type of the sprite
+		any sprite - the "mask"
+		int x, y - the initial location of the sprite
+		"""
 		if spriteType == "img":
 			sprite = self.__loadImage(sprite)
 		s = Sprite(self.display, sprite, x, y)
@@ -201,6 +209,9 @@ class Screen:
 		return s
 
 	def removeSprite(self, sprite):
+		"""
+		Sprite sprite - the sprite to be deleted
+		"""
 		self.__sprites.remove(sprite)
 		return
 
@@ -209,6 +220,9 @@ class Screen:
 		return
 
 	def removeMultipleSprites(self, *args):
+		"""
+		Sprite args - the sprites to be deleted
+		"""
 		for sprite in args:
 			if sprite in self.__sprites:
 				self.removeSprite(sprite)
@@ -221,17 +235,112 @@ class Screen:
 			sprite.update()
 		return
 
-	def moveSprite(self, index, factor, x, y):
+	def updateFields(self):
+		for field in self.__fields:
+			field.update(self.addTextButton)
+		return
+
+	def moveSprite (factor, x, y):
+		"""
+		int factor - by how much to move the sprite
+		bool x, y - whether to move this axis or not
+		"""
 		self.__sprites[index].move(factor, x, y)
 		return
 
-	def addInputField(self, x, y, size, color):
-		return InputField(self.display, (x, y), color, size)
+	def addField(self, ID, txt, x, y, size, emptyLength=15):
+		"""
+		str ID - the ID of the field (v. important!!)
+		str txt - the initital text to be displayed
+		int x, y - the position of the field
+		int size - the size of the text
+		int emptyLength - the minimum length (in spaces) of text in the field (not yet implemented)
+		"""
+		for field in self.__fields:
+			if field.ID == ID:
+				return field
+		if txt is None:
+			txt = ""
+			for i in range(emptyLength):
+				txt += " "
+		self.__fields.append(InputField(ID, txt, x, y, size))
+		return self.__fields[0]
 
-	def updateField(self, field):
-		field.checkClick()
-		text = field.text
-		if len(text) < 8:
-			text = "        "
-		self.addTextButton(text, field.x, field.y, field.size, BLACK, WHITE)
+	def fieldCheck(self):
+		for field in self.__fields:
+			field.checkClick()
+		return
+
+	def __sendInputToFields(self, letter):
+		"""
+		str letter - the letter to send to the active field
+		"""
+		for f in self.__fields:
+			if f.active:
+				f.sendLetters(letter)
+				return
+		return
+
+	def delAllFields(self):
+		self.__fields = []
+		return
+
+	def delField(self, field):
+		"""
+		InputField field - the field to be deleted
+		"""
+		try:
+			self.__fields.remove(field)
+		except:
+			exit(f"EngineError: Input Field {field} not found")
+		return
+
+	def delFieldByID(self, ID):
+		"""
+		str ID - the ID of the field to be deleted
+		"""
+		for field in self.__fields:
+			if field.ID == ID:
+				self.delField(field)
+				return
+		exit(f"EngineError: No field ID'd as {ID}")
+		return
+
+	def delMultipleFields(self, *args):
+		"""
+		InputField args - the fields to be deleted
+		"""
+		for field in args:
+			try:
+				self.__fields.remove(field)
+			except:
+				exit(f"EngineError: field {field} not found")
+		return
+
+	def delMultipleFieldsByID(self, *args):
+		"""
+		str args - a list of all the IDs to delete
+		"""
+		targets = []
+		for ID in args:
+			for field in self.__fields:
+				if field.ID == ID:
+					targets.append(field)
+					break
+			exit(f"EngineError: No field ID {ID}")
+		self.delMultipleFields(t for t in targets)
+		return
+
+	def loadImagesBaseOnPrefix(self, loc, prefix):
+		"""
+		str loc - the location of the images
+		str prefix - the prefix of the images
+
+		yields all the images with the prefix (post load)
+		"""
+		lis = os.listdir(loc)
+		leng = len(prefix)
+		for item in lis:
+			if item[:leng] == prefix:
+				yield self.__loadImage(f"{loc}\\{item}")
 		return

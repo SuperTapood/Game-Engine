@@ -9,6 +9,11 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 # change log:
 
 # version 0.3
+- added input fields - WORKING (but there is a bug regarding reaction time)
+- engine test 1 successful
+- added many ways to delete an input field
+- added a way to load images based on prefix (using yield)
+- added a bit of documentation
 
 # version 0.2
 - added overriding decorator
