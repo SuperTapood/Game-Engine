@@ -3,10 +3,11 @@ from colors import *
 from sprite import Sprite
 from inputField import InputField
 import os
+from player import Player
 
 
 class Screen:
-	def __init__(self, x, y, color, caption=""):
+	def __init__(self, x=500, y=500, color=BLACK, caption=""):
 		"""
 		int x - height of the window
 		int y - width of the window
@@ -21,6 +22,8 @@ class Screen:
 		self.MIDDLEY = y // 2
 		self.color = None
 		self.fill(color)
+		self.player = None
+		self.BG = False
 		pygame.display.set_caption(caption)
 		return
 
@@ -52,9 +55,13 @@ class Screen:
 	def update(self):
 		# update the display
 		pygame.display.update()
-		self.fill(self.color)
+		if not self.BG:
+			self.fill(self.color)
+		else:
+			self.__loadBG(self.bg)
 		self.updateSprites()
 		self.updateFields()
+		self.updatePlayer()
 		return
 
 	def __quitHandle(self, event):
@@ -135,11 +142,13 @@ class Screen:
 		r str loc - the location of the background picture
 		"""
 		img = self.__loadImage(loc)
+		self.bg = img
 		rect = img.get_rect()
 		x = rect.w
 		y = rect.h
 		self.resize(x, y)
 		self.__loadBG(img)
+		self.BG = True
 		return
 
 	def __loadImage(self, loc):
@@ -164,6 +173,7 @@ class Screen:
 		"""
 		surface img - the image to load as background
 		"""
+		self.bg = img
 		self.__blit(img, (0, 0))
 		return
 
@@ -171,7 +181,9 @@ class Screen:
 		"""
 		r str loc - the location of the background picture
 		"""
+		self.BG = True
 		img = self.__loadImage(loc)
+		self.bg = img
 		self.__loadBG(img)
 		return
 
@@ -238,6 +250,13 @@ class Screen:
 	def updateFields(self):
 		for field in self.__fields:
 			field.update(self.addTextButton)
+		return
+
+	def updatePlayer(self):
+		try:
+			self.player.blit(self.display)
+		except AttributeError:
+			return
 		return
 
 	def moveSprite (factor, x, y):
@@ -331,7 +350,7 @@ class Screen:
 		self.delMultipleFields(t for t in targets)
 		return
 
-	def loadImagesBaseOnPrefix(self, loc, prefix):
+	def loadImagesBasedOnPrefix(self, loc, prefix):
 		"""
 		str loc - the location of the images
 		str prefix - the prefix of the images
@@ -344,3 +363,25 @@ class Screen:
 			if item[:leng] == prefix:
 				yield self.__loadImage(f"{loc}\\{item}")
 		return
+
+	def addPlayer(self, name, x, y, animationChain):
+		try:
+			assert self.player.name == name
+			return self.player
+		except AttributeError:
+			self.player = Player(name, x, y, animationChain)
+			return self.player
+		return
+
+	def __returnKeyName(self, event):
+		return pygame.key.name(event.key)
+
+	def movePlayer(self, x, y, factor):
+		if x:
+			self.player.x += factor
+		if y:
+			self.player.y += factor
+		return
+
+	def overridePlayerAnim(self):
+		pass

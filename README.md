@@ -8,6 +8,12 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 
 # change log:
 
+# version 0.4
+- added player
+- added player movements
+- added player animations
+- added engine test 2
+
 # version 0.3
 - added input fields - WORKING (but there is a bug regarding reaction time)
 - engine test 1 successful
