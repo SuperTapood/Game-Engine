@@ -62,7 +62,6 @@ class InputField:
 
 	def update(self, func):
 		# updates thyself
-		self.__checkLen()
 		rect = func(str(self.txt), self.x, self.y, self.size, BLACK, WHITE)
 		self.w, self.h = rect[2], rect[3]
 		return

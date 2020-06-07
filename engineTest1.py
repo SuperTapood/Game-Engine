@@ -58,6 +58,7 @@ def displayBegin():
 		mini = int(mi.txt)
 		maxi = int(ma.txt)
 		start(mini, maxi)
+		return
 	return
 
 
@@ -67,9 +68,8 @@ if __name__ == "__main__":
 	while True:
 		won = False
 		while not won:
+			scr.eventHandler()
 			t = time()
-			# displayBegin()
-			start(1, 5)
-			
+			displayBegin()			
 			e = time() - t
-			# print(f"loop took {e} seconds, FPS = {1 / e}")
+			print(f"loop took {e} seconds, FPS = {1 / e}")
