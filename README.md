@@ -32,7 +32,7 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 
 # version 0.1
 - added a fill function
-- added a event handler (overridable)
+- added an event handler (overridable)
 - added terminate (cooler than quit) and enabling exit-saves (overridable)
 - added update screen
 - added text function

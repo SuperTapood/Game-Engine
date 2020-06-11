@@ -4,6 +4,8 @@ from random import randint as random
 from override import override
 import pygame
 from time import time
+from inputField import InputField
+
 
 class Screen(Screen):
 	@override(Screen)
@@ -43,7 +45,7 @@ def start(mi, ma):
 		testbtn = scr.addTextButton("Test", scr.MIDDLEX - 50, 400, 50, BLACK, WHITE)
 		if scr.checkClick(testbtn):
 			resp, true = test(int(guess.txt), rand)
-	exit()
+	end()
 	return
 
 def displayBegin():
@@ -70,6 +72,7 @@ if __name__ == "__main__":
 		while not won:
 			scr.eventHandler()
 			t = time()
-			displayBegin()			
+			displayBegin()
+			# start(1, 5)		
 			e = time() - t
 			print(f"loop took {e} seconds, FPS = {1 / e}")

@@ -7,5 +7,5 @@ def override(interface_class):
 			assert(method.__name__ in dir(interface_class))
 			return method
 		except AssertionError:
-			exit(f'EngineOverrideError: Method "{method.__name__}" does not exist')
+			exit(f'EngineOverrideError: Method "{method.__name__}" does not exist in object {interface_class}')
 	return overrider
