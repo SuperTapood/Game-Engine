@@ -1,9 +1,7 @@
 import pygame
 from colors import *
-from sprite import Sprite
 from inputField import InputField
 import os
-from player import Player
 
 
 class Screen:
@@ -17,6 +15,9 @@ class Screen:
 		pygame.init()
 		self.__sprites = []
 		self.__fields = []
+		self.__players = []
+		self.X = x
+		self.Y = y
 		self.display = pygame.display.set_mode((x, y))
 		self.MIDDLEX = x // 2
 		self.MIDDLEY = y // 2
@@ -24,6 +25,8 @@ class Screen:
 		self.fill(color)
 		self.player = None
 		self.BG = False
+		self.clock = None
+		self.fps = 0
 		pygame.display.set_caption(caption)
 		return
 
@@ -36,10 +39,11 @@ class Screen:
 		self.display.fill(color)
 		return
 
-	def eventHandler(self):
+	def event_handler(self):
 		## override this function in order to add events ##
 		for event in pygame.event.get():
-			self.__quitHandle(event)
+			self.__quit_handle(event)
+			self.send_input_events_to_players(event)
 		self.update()
 		return
 
@@ -55,16 +59,18 @@ class Screen:
 	def update(self):
 		# update the display
 		pygame.display.update()
+		if self.clock is not None:
+			self.clock.tick(self.fps)
 		if not self.BG:
 			self.fill(self.color)
 		else:
-			self.__loadBG(self.bg)
-		self.updateSprites()
-		self.updateFields()
-		self.updatePlayer()
+			self.__load_BG(self.bg)
+		self.update_fields()
+		self.update_sprites()
+		self.update_players()
 		return
 
-	def __quitHandle(self, event):
+	def __quit_handle(self, event):
 		"""
 		private method
 		event event - the event (from pygame.event.get())
@@ -73,7 +79,7 @@ class Screen:
 			self.terminate()
 		return
 
-	def addText(self, txt, x, y, size, color=WHITE, font="freesansbold.ttf", center=True):
+	def add_text(self, txt, x, y, size, color=WHITE, font="freesansbold.ttf", center=True):
 		"""
 		str txt - the text to be displayed
 		int x - x position of the text
@@ -92,10 +98,10 @@ class Screen:
 			rect.center = (x, y)
 		else:
 			rect.topleft = (x, y)
-		self.__blit(text, rect)
+		self.blit(text, rect)
 		return rect
 
-	def __blit(self, obj, rect):
+	def blit(self, obj, rect):
 		"""
 		private method
 		blits an object to the display
@@ -105,7 +111,7 @@ class Screen:
 		self.display.blit(obj, rect)
 		return
 
-	def addButton(self, x, y, w, h, color):
+	def add_button(self, x, y, w, h, color):
 		"""
 		int x - the x position of the button
 		int y - the y position of the button
@@ -119,7 +125,7 @@ class Screen:
 		pygame.draw.rect(self.display, color, tup)
 		return tup
 
-	def checkClick(self, tup):
+	def check_click(self, tup):
 		"""
 		checks if the button is "clicked"
 		int tuple tup - the x loc, y loc , width and height respectivly
@@ -137,21 +143,21 @@ class Screen:
 		# return bool
 		return x + w > mouse[0] > x and y + h > mouse[1] > y and click[0] == 1
 
-	def fitForBG(self, loc):
+	def fit_for_BG(self, loc):
 		"""
 		r str loc - the location of the background picture
 		"""
-		img = self.__loadImage(loc)
+		img = self.load_image(loc)
 		self.bg = img
 		rect = img.get_rect()
 		x = rect.w
 		y = rect.h
 		self.resize(x, y)
-		self.__loadBG(img)
+		self.__load_BG(img)
 		self.BG = True
 		return
 
-	def __loadImage(self, loc):
+	def load_image(self, loc):
 		"""
 		r str loc - the location of the image
 
@@ -166,28 +172,30 @@ class Screen:
 		"""
 		self.MIDDLEX = x // 2
 		self.MIDDLEY = y // 2
+		self.X = x
+		self.Y = y
 		self.display = pygame.display.set_mode((x, y))
 		return
 
-	def __loadBG(self, img):
+	def __load_BG(self, img):
 		"""
 		surface img - the image to load as background
 		"""
 		self.bg = img
-		self.__blit(img, (0, 0))
+		self.blit(img, (0, 0))
 		return
 
-	def loadBG(self, loc):
+	def load_BG(self, loc):
 		"""
 		r str loc - the location of the background picture
 		"""
 		self.BG = True
-		img = self.__loadImage(loc)
+		img = self.load_image(loc)
 		self.bg = img
-		self.__loadBG(img)
+		self.__load_BG(img)
 		return
 
-	def addTextButton(self, txt, x, y, size, txtColor, btnColor, font="freesansbold.ttf"):
+	def add_text_button(self, txt, x, y, size, txtColor, btnColor, font="freesansbold.ttf"):
 		"""
 		adds a button with text on it
 		str txt - the text to be written
@@ -201,73 +209,19 @@ class Screen:
 		returns int tuple
 		"""
 		# get the text's rect
-		textRect = self.addText(txt, x, y, size, txtColor, center=False)
+		textRect = self.add_text(txt, x, y, size, txtColor, center=False)
 		# create it
-		rect = self.addButton(textRect.x, textRect.y, textRect.w, textRect.h, btnColor)
+		rect = self.add_button(textRect.x, textRect.y, textRect.w, textRect.h, btnColor)
 		# draw the text
-		textRect = self.addText(txt, x, y, size, txtColor, center=False)
+		textRect = self.add_text(txt, x, y, size, txtColor, center=False)
 		return rect
 
-	def addSprite(self, spriteType, sprite, x, y):
-		"""
-		str spriteType - the type of the sprite
-		any sprite - the "mask"
-		int x, y - the initial location of the sprite
-		"""
-		if spriteType == "img":
-			sprite = self.__loadImage(sprite)
-		s = Sprite(self.display, sprite, x, y)
-		self.__sprites.append(s)
-		return s
-
-	def removeSprite(self, sprite):
-		"""
-		Sprite sprite - the sprite to be deleted
-		"""
-		self.__sprites.remove(sprite)
-		return
-
-	def removeAllSprites(self):
-		self.__sprites = []
-		return
-
-	def removeMultipleSprites(self, *args):
-		"""
-		Sprite args - the sprites to be deleted
-		"""
-		for sprite in args:
-			if sprite in self.__sprites:
-				self.removeSprite(sprite)
-			else:
-				exit(f"EngineError: sprite {sprite} not found")
-		return
-
-	def updateSprites(self):
-		for sprite in self.__sprites:
-			sprite.update()
-		return
-
-	def updateFields(self):
+	def update_fields(self):
 		for field in self.__fields:
-			field.update(self.addTextButton)
+			field.update(self.add_text_button)
 		return
 
-	def updatePlayer(self):
-		try:
-			self.player.blit(self.display)
-		except AttributeError:
-			return
-		return
-
-	def moveSprite (factor, x, y):
-		"""
-		int factor - by how much to move the sprite
-		bool x, y - whether to move this axis or not
-		"""
-		self.__sprites[index].move(factor, x, y)
-		return
-
-	def addField(self, ID, txt, x, y, size, emptyLength=15):
+	def add_field(self, ID, txt, x, y, size, emptyLength=15):
 		"""
 		str ID - the ID of the field (v. important!!)
 		str txt - the initital text to be displayed
@@ -285,12 +239,12 @@ class Screen:
 		self.__fields.append(InputField(ID, txt, x, y, size))
 		return self.__fields[0]
 
-	def fieldCheck(self):
+	def field_check(self):
 		for field in self.__fields:
-			field.checkClick()
+			field.check_click()
 		return
 
-	def __sendInputToFields(self, letter):
+	def __send_input_to_fields(self, letter):
 		"""
 		str letter - the letter to send to the active field
 		"""
@@ -300,11 +254,11 @@ class Screen:
 				return
 		return
 
-	def delAllFields(self):
+	def del_all_fields(self):
 		self.__fields = []
 		return
 
-	def delField(self, field):
+	def del_field(self, field):
 		"""
 		InputField field - the field to be deleted
 		"""
@@ -314,18 +268,18 @@ class Screen:
 			exit(f"EngineError: Input Field {field} not found")
 		return
 
-	def delFieldByID(self, ID):
+	def del_field_by_ID(self, ID):
 		"""
 		str ID - the ID of the field to be deleted
 		"""
 		for field in self.__fields:
 			if field.ID == ID:
-				self.delField(field)
+				self.del_field(field)
 				return
 		exit(f"EngineError: No field ID'd as {ID}")
 		return
 
-	def delMultipleFields(self, *args):
+	def del_multiple_fields(self, *args):
 		"""
 		InputField args - the fields to be deleted
 		"""
@@ -336,7 +290,7 @@ class Screen:
 				exit(f"EngineError: field {field} not found")
 		return
 
-	def delMultipleFieldsByID(self, *args):
+	def del_multiple_fields_by_ID(self, *args):
 		"""
 		str args - a list of all the IDs to delete
 		"""
@@ -347,10 +301,10 @@ class Screen:
 					targets.append(field)
 					break
 			exit(f"EngineError: No field ID {ID}")
-		self.delMultipleFields(t for t in targets)
+		self.del_multiple_fields(t for t in targets)
 		return
 
-	def loadImagesBasedOnPrefix(self, loc, prefix):
+	def load_images_based_on_prefix(self, loc, prefix):
 		"""
 		str loc - the location of the images
 		str prefix - the prefix of the images
@@ -361,27 +315,36 @@ class Screen:
 		leng = len(prefix)
 		for item in lis:
 			if item[:leng] == prefix:
-				yield self.__loadImage(f"{loc}\\{item}")
+				yield self.load_image(f"{loc}\\{item}")
 		return
 
-	def addPlayer(self, name, x, y, animationChain):
-		try:
-			assert self.player.name == name
-			return self.player
-		except AttributeError:
-			self.player = Player(name, x, y, animationChain)
-			return self.player
-		return
-
-	def __returnKeyName(self, event):
+	def return_key_name(self, event):
 		return pygame.key.name(event.key)
 
-	def movePlayer(self, x, y, factor):
-		if x:
-			self.player.x += factor
-		if y:
-			self.player.y += factor
+	def add_sprite(self, sprite):
+		self.__sprites.append(sprite)
 		return
 
-	def overridePlayerAnim(self):
-		pass
+	def update_sprites(self):
+		for sprite in self.__sprites:
+			sprite.update_sprite()
+		return
+
+	def add_clock(self, fps):
+		self.fps = fps
+		self.clock = pygame.time.Clock()
+		return
+
+	def update_players(self):
+		for player in self.__players:
+			player.update()
+		return
+
+	def add_player(self, player):
+		self.__players.append(player)
+		return
+
+	def send_input_events_to_players(self, event):
+		for player in self.__players:
+			player.input(event)
+		return

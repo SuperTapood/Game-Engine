@@ -8,6 +8,17 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 
 # change log:
 
+# version 0.5
+- added clock function
+- re-added sprites (now is a template)
+- added custom exceptions
+- redoing the second engine test
+- added ground and background to engine test 2
+- added player class (now is a template)
+- added bird movement for engine test 2
+- replaced all functions' names to snake_case from CamelCase
+
+
 # version 0.4
 - added player
 - added player movements

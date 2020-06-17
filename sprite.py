@@ -1,36 +1,46 @@
-from time import sleep as wait
-from time import time
+
 
 class Sprite:
-	def __init__(self, window, sprite, x, y):
+	def __init__(self, img, x, y, screen):
+		self.START_X = x
+		self.START_Y = y
+		self.WIDTH = img.get_width()
+		self.HEIGHT = img.get_height()
+		self.x = 0
+		self.y = 0
+		self.img = img
+		screen.add_sprite(self)
+		self.screen = screen
+		self.set_pos(x, y)
+		return
+
+	def set_pos(self, x, y):
 		self.x = x
 		self.y = y
-		self.sprite = sprite
-		self.window = window
-		self.moveStart = time()
 		return
 
-	def __blit(self):
-		self.window.blit(self.sprite, (self.x, self.y))
+	def update_sprite(self):
+		self.screen.blit(self.img, (self.x, self.y))
+		self.update()
 		return
 
-	def move(self, factor, x, y):
-		if time() - self.moveStart >= 0.3:
-			self.__moveX(int(x) * factor)
-			self.__moveY(int(y) * factor)
-			self.moveStart = time()
+	def move_x(self, vec):
+		self.x += vec
 		return
 
-	def __moveX(self, factor):
-		self.x += factor
-		self.__blit()
+	def move_y(self, vec):
+		self.y += vec
 		return
 
-	def __moveY(self, factor):
-		self.y += factor
-		self.__blit()
+	def reset_pos(self):
+		self.set_pos(self.START_X, self.START_Y)
 		return
 
 	def update(self):
-		self.__blit()
+		pass
+
+	def set_defaults(self, x, y):
+		self.START_X = x
+		self.START_Y = y
+		self.reset_pos()
 		return
