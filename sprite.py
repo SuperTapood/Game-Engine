@@ -1,7 +1,5 @@
-
-
 class Sprite:
-	def __init__(self, img, x, y, screen):
+	def __init__(self, img, x, y, screen, dummy=False):
 		self.START_X = x
 		self.START_Y = y
 		self.WIDTH = img.get_width()
@@ -9,7 +7,8 @@ class Sprite:
 		self.x = 0
 		self.y = 0
 		self.img = img
-		screen.add_sprite(self)
+		if not dummy:
+			screen.add_sprite(self)
 		self.screen = screen
 		self.set_pos(x, y)
 		return

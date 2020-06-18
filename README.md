@@ -8,6 +8,10 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 
 # change log:
 
+# version 0.55
+- added a sprite generator
+- added dummy players (for regeneration)
+
 # version 0.5
 - added clock function
 - re-added sprites (now is a template)

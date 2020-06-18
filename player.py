@@ -14,6 +14,8 @@ class Player:
 		if self.animated:
 			self.current_img = self.imgs[0]
 		self.screen.add_player(self)
+		self.WIDTH = self.current_img.get_width()
+		self.HEIGHT = self.current_img.get_height()
 		self.reset_pos()
 		self.x_move_remainder = 0
 		self.y_move_remainder = 0
@@ -72,20 +74,20 @@ class Player:
 		pass
 
 	def move_smoothly_y(self, value, move_time):
-		self.check_values(value, move_time)
+		self.check_values(move_time)
 		if self.y_move_remainder == 0:
 			self.y_move_remainder = value / move_time
 			self.y_remain = move_time
 		return
 
 	def move_smoothly_x(self, value, move_time):
-		self.check_values(value, move_time)
+		self.check_values(move_time)
 		if self.x_move_remainder == 0:
 			self.x_move_remainder = value / move_time
 			self.x_remain = move_time
 		return
 
-	def check_values(self, value, move_time):
+	def check_values(self, move_time):
 		if move_time < 0:
 			raise SmoothingError(move_time)
 		return

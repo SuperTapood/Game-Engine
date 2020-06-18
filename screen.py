@@ -2,6 +2,7 @@ import pygame
 from colors import *
 from inputField import InputField
 import os
+from player import Player
 
 
 class Screen:
@@ -16,6 +17,7 @@ class Screen:
 		self.__sprites = []
 		self.__fields = []
 		self.__players = []
+		self.__generators = []
 		self.X = x
 		self.Y = y
 		self.display = pygame.display.set_mode((x, y))
@@ -68,6 +70,7 @@ class Screen:
 		self.update_fields()
 		self.update_sprites()
 		self.update_players()
+		self.update_generators()
 		return
 
 	def __quit_handle(self, event):
@@ -347,4 +350,16 @@ class Screen:
 	def send_input_events_to_players(self, event):
 		for player in self.__players:
 			player.input(event)
+		return
+
+	def return_dummy_player(self, img, x, y, screen):
+		return Player(img, x, y, screen, dummy=True)
+
+	def add_generator(self, generator):
+		self.__generators.append(generator)
+		return
+
+	def update_generators(self):
+		for gen in self.__generators:
+			gen.update()
 		return
