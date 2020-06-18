@@ -43,3 +43,17 @@ class SmoothingError(Exception):
 		# return the message that will be printed at the end of the exception
 		return f"cannot move object in {self.frames} frames"
 	pass
+
+class ItemNotFoundError(Exception):
+	__module__ = Exception.__module__
+	
+	# get the message that was raised with the exception
+	def __init__(self, item, array):
+		self.item = item
+		self.array = array
+		return
+
+	def __str__(self):
+		# return the message that will be printed at the end of the exception
+		return f"cannot find item {item} in array {array}"
+	pass

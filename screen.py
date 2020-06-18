@@ -3,6 +3,7 @@ from colors import *
 from inputField import InputField
 import os
 from player import Player
+from exceptions import *
 
 
 class Screen:
@@ -240,7 +241,7 @@ class Screen:
 			for i in range(emptyLength):
 				txt += " "
 		self.__fields.append(InputField(ID, txt, x, y, size))
-		return self.__fields[0]
+		return self.__fields[-1]
 
 	def field_check(self):
 		for field in self.__fields:
@@ -265,10 +266,10 @@ class Screen:
 		"""
 		InputField field - the field to be deleted
 		"""
-		try:
+		if field in self.__fields:
 			self.__fields.remove(field)
-		except:
-			exit(f"EngineError: Input Field {field} not found")
+		else:
+			raise ItemNotFoundError(field, "self.__fields")
 		return
 
 	def del_field_by_ID(self, ID):
