@@ -8,9 +8,17 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 
 # change log:
 
-# version 0.55
+# version 0.6
 - added a sprite generator
 - added dummy players (for regeneration)
+- added the SCENE API
+- added text and buttons to the API
+- fixed problem where text won't update when given a variable in the API
+- added str attribute to the scene class to print all of the contained layers
+- moved the engine to a package (now import it using Game_Engine.[MODULE])
+- added distribute function to the API to easily dismantle the params given in the execution
+- added load function to load a scene onto the pygame screen
+
 
 # version 0.5
 - added clock function

@@ -1,9 +1,9 @@
 import pygame
-from colors import *
-from inputField import InputField
+from .colors import *
+from .inputField import InputField
 import os
-from player import Player
-from exceptions import *
+from .player import Player
+from .exceptions import *
 
 
 class Screen:

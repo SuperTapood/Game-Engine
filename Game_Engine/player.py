@@ -1,8 +1,9 @@
-from exceptions import *
+from .exceptions import *
 
 
 class Player:
 	def __init__(self, imgs, x, y, screen):
+		# there are a lot of attributes here to make it easy to handle a Player sub-class (child class)
 		self.screen = screen
 		self.x = x
 		self.y = y

@@ -1,6 +1,6 @@
 ## decorator for overriding ##
 
-from exceptions import * 
+from .exceptions import * 
 
 def override(interface_class):
 	# assert im overriding an existing method

@@ -1,4 +1,4 @@
-from sprite import Sprite
+from .sprite import Sprite
 
 
 class Sprite_Generator:

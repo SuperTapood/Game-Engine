@@ -4,9 +4,9 @@ import engine as eng
 
 
 
-
-# eng.Screen methods:
-# eng.Screen.__init__(x=500, y=500, color=BLACK, caption="") -> Screen object
+# __eng.Screen methods:__
+# eng.Screen.init(x=500, y=500, color=BLACK, caption="") -> Screen object
+special attribute;
 this will return a Screen object
 
 # eng.Screen.fill(color)
@@ -22,7 +22,7 @@ terminates the pygame screen then the python program (wrote this to be overridab
 updates the screen -> resets the window, then redraws everything back on
 
 # eng.Screen.quit_handle(event)
-private method
+private method;
 checks if an event is of pygame.QUIT type
 
 # eng.Screen.add_text(txt, x, y, size, color=WHITE, font="freesansbold.ttf", center=True)
@@ -47,7 +47,7 @@ this loads an image at location loc and returns a pygame image
 resizes the screen to size (x, y) and updates the relevant Screen properties
 
 # eng.Screen.load_BG(img)
-private method.
+private method;
 load image img as the background of the screen
 
 # eng.Screen.load_BG(img)
