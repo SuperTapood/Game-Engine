@@ -11,6 +11,7 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 # version 0.6
 - added a sprite generator
 - added dummy players (for regeneration)
+- added player class (now is a template)
 - added the SCENE API
 - added text and buttons to the API
 - fixed problem where text won't update when given a variable in the API
@@ -26,7 +27,6 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 - added custom exceptions
 - redoing the second engine test
 - added ground and background to engine test 2
-- added player class (now is a template)
 - added bird movement for engine test 2
 - replaced all functions' names to snake_case from CamelCase
 
