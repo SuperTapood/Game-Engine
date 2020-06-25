@@ -46,6 +46,8 @@ def set_up_scenes(screen):
 	setting.add_text("MAX:", 100, 200, 50)
 	setting.add_text_button("+", 350, 170, 50, BLACK, WHITE, check_click=True, click_result=game.add_max)
 	setting.add_text_button("-", 400, 170, 50, BLACK, WHITE, check_click=True, click_result=game.sub_max)
+	str(setting)
+	exit()
 	guess = Scene(screen)
 	return setting, guess
 
