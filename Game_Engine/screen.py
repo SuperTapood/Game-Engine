@@ -364,3 +364,12 @@ class Screen:
 		for gen in self.__generators:
 			gen.update()
 		return
+
+	def add_interactable(self, inter):
+		self.__interactables.append(inter)
+		return
+
+	def update_inters(self):
+		for inter in self.__interactables:
+			inter.update()
+		return

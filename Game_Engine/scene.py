@@ -71,10 +71,8 @@ class Scene:
 		return
 
 	def __str__(self):
-		# print out the summary (contents) of this scene
-		print("SCENE SUMMARY:")
+		out = "SCENE SUMMARY:"
 		for i, func in enumerate(self.add_ons):
-			print(f"layer {i}: {func[0].__name__[2:]}")
-		# return str object (any) so this function won't sh*t itself
-		return ""
+			out += "layer {i}: {func[0].__name__[2:]}\n"
+		return out
 	pass

@@ -19,6 +19,7 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 - moved the engine to a package (now import it using Game_Engine.[MODULE])
 - added distribute function to the API to easily dismantle the params given in the execution
 - added load function to load a scene onto the pygame screen
+- added the first version of the interactable class (which WILL break)
 
 
 # version 0.5

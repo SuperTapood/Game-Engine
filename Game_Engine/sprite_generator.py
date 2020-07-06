@@ -9,7 +9,7 @@ class Sprite_Generator:
 
 	def update(self):
 		for child in self.children:
-			child.update_sprite()
+			child.update()
 		self.check_children()
 		return
 

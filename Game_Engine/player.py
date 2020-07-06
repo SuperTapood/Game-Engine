@@ -92,3 +92,16 @@ class Player:
 		if move_time < 0:
 			raise SmoothingError(move_time)
 		return
+
+	def get_pos(self):
+		return (self.x, self.y)
+
+	def reposition(self, x=None, y=None):
+		if x is None:
+			self.x = self.x
+		else:
+			self.x = x
+		if y is None:
+			self.y = self.y
+		else:
+			self.y = y

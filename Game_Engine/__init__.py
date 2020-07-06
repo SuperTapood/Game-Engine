@@ -6,3 +6,4 @@ from .sprite           import Sprite
 from .scene            import Scene
 from .screen           import Screen
 from .sprite_generator import Sprite_Generator
+from .interactable     import Interactable
