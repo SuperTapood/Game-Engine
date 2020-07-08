@@ -9,7 +9,10 @@ Usage of this pygame game engine requires quite a bit of python knowledge
 # change log:
 
 # version 0.7
-- further maintenance on the engine has been seized 
+- further maintenance on the engine has been seized
+- engine has been depricated
+- research towards a _better_ version of the engine has began - the INDIGO engine
+
 # version 0.6
 - added a sprite generator
 - added dummy players (for regeneration)
