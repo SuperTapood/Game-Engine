@@ -1,4 +1,4 @@
-from .exceptions import PlaceholderBlitError
+from ..exceptions import PlaceholderBlitError
 
 
 class Placeholder:
@@ -17,4 +17,4 @@ class Placeholder:
 
 	def blit(self):
 		if self.x is None or self.y is None:
-			raise PlaceholderBlitError(self)
+			raise PlaceholderBlitError(self, self.x, self.y)

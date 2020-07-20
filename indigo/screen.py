@@ -4,6 +4,7 @@ from time import time
 
 class Screen:
 	def __init__(self, x, y, bg_color, caption="pygame window"):
+		pygame.init()
 		self.X = x
 		self.Y = y
 		self.bg_color = bg_color

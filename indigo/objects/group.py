@@ -1,4 +1,4 @@
-from .exceptions import GroupAddError
+from ..exceptions import GroupAddError
 from .engine_object import Engine_Object
 
 class Group:
@@ -8,15 +8,7 @@ class Group:
 		return
 
 	def __add__(self, other):
-		print(type(other))
-		try:
-			if other.type == Group:
-				self.objects.multi_add(other.dismantle())
-			elif other.type == "Engine_Object":
-				self.objects.append(other)
-		except AttributeError:
-			raise GroupTypeError(other, type(other))
-		return
+		return self.append(other)
 
 	def multi_add(self, *objs):
 		for obj in objs:
@@ -24,10 +16,17 @@ class Group:
 		return
 
 	def append(self, other):
-		return self + other
+		try:
+			if other.type == Group:
+				self.objects.multi_add(other.dismantle())
+			elif other.type == "Engine_Object":
+				self.objects.append(other)
+		except AttributeError:
+			raise GroupAddError(other, type(other))
+		return
 
 	def join(self, other):
-		return self + other
+		return self.append(other)
 
 	def dismantle(self):
 		for obj in self.objects:
@@ -45,3 +44,10 @@ class Group:
 			obj.blit()
 		return
 
+	def summary(self):
+		print(str(self))
+		return
+
+	def __iter__(self):
+		return iter(self.objects)
+	pass
