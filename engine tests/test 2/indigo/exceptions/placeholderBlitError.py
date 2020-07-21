@@ -2,10 +2,12 @@ class PlaceholderBlitError(Exception):
 	## raise this when the group object gets a non-addable object (non group or engine object) ##
 	__module__ = Exception.__module__
 
-	def __init__(self, ph, x, y):
+	def __init__(self, x, y):
+		"""
+		int x, y - the loc of the blitting
+		"""
 		self.x = x
 		self.y = y
-		self.ph = ph
 		return
 
 	def __str__(self):
