@@ -34,7 +34,7 @@ class Group:
 		return
 
 	def __str__(self):
-		out = ""
+		out = f"{repr(self)} Summary: \n\n"
 		for i, obj in enumerate(self.dismantle()):
 			out += f"Group Layer {i} - {str(obj)}\n"
 		return out
@@ -50,4 +50,10 @@ class Group:
 
 	def __iter__(self):
 		return iter(self.objects)
+
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
 	pass

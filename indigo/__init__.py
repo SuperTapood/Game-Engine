@@ -2,6 +2,8 @@
 from .screen import Screen
 from .colors import *
 from .image import Image
+from . import counter
+from .test_counter import Test_Counter
 
 ##  objects sub module
 from .objects import Circle

@@ -9,20 +9,14 @@ class Screen:
 		self.Y = y
 		self.bg_color = bg_color
 		self.display = pygame.display.set_mode((x, y))
+		self.fill(self.bg_color)
 		pygame.display.set_caption(caption)
 		return
 
-	def update(self, show_fps=False):
-		start = time()
+	def update(self):
 		for event in pygame.event.get():
 			self.quit_handler(event)
 		pygame.display.update()
-		end = time() - start
-		if show_fps:
-			try:
-				print(f"{1 / end} FPS")
-			except ZeroDivisionError:
-				print(f"1000.0 FPS (end time is 0)")
 		return
 
 	def quit_handler(self, event):
@@ -32,4 +26,13 @@ class Screen:
 
 	def quit(self):
 		exit()
+		return
+
+	def blit(self, obj, x, y):
+		self.display.blit(obj, (x, y))
+		return
+
+	def fill(self, color):
+		self.bg_color = color
+		self.display.fill(color)
 		return

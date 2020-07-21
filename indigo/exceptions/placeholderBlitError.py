@@ -9,4 +9,4 @@ class PlaceholderBlitError(Exception):
 		return
 
 	def __str__(self):
-		return f"cannot blit placeholder {self.ph} to pos ({self.x}, {self.y})"
+		return f"cannot blit placeholder to pos ({self.x}, {self.y})"
