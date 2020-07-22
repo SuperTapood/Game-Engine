@@ -53,3 +53,15 @@ class Image:
 		## ! will fill this space later ! ##
 		pass
 
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def __str__(self):
+		obj = repr(self) 
+		dims = self.get_dims()
+		out = f"{obj} with dimensions {dims}\n"
+		return out
+

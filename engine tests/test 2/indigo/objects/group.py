@@ -56,4 +56,13 @@ class Group:
 		class_name = self.__class__.__name__
 		memory_location = hex(id(self))
 		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def eliminate(self, func):
+		for obj in self:
+			if func(obj):
+				self.objects.remove(obj)
+		return
+
+	def __len__(self):
+		return len(self.objects)
 	pass

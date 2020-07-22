@@ -19,3 +19,4 @@ class exception(Exception):
 
 from .groupAddError import GroupAddError
 from .placeholderBlitError import PlaceholderBlitError
+from .overrideError import OverrideError

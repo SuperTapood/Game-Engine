@@ -47,3 +47,7 @@ class Screen:
 		self.bg_color = color
 		self.display.fill(color)
 		return
+
+	def set_bg_img(self, bg_img):
+		self.blit(bg_img, 0, 0)
+		return
