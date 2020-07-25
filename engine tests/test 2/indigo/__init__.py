@@ -5,7 +5,6 @@ from .image import Image
 from . import counter
 from .test_counter import Test_Counter
 from .override import override
-from .buttons import *
 
 ##  objects sub module
 from .objects import Circle

@@ -1,30 +1,47 @@
 from .engine_object import Engine_Object
+from pygame.event import get as get_events
 
 class Player(Engine_Object):
-	def __init__(self, x, y, up, down, left, right, movement_frames):
-		self.actions = [up, down, left, right]
-		self.responses = [self.up, self.down, self.left, self.right]
+	def __init__(self, scr, img, x, y):
+		self.screen = scr
 		self.x = x
 		self.y = y
-		self.frames = movement_frames
-		self.remain_smooth = 0
+		self.img = img
+		self.remain_smooth_x = 0
+		self.remain_smooth_y = 0
+		self.smooth_x = False
+		self.smooth_y = False
+		self.x_move_factor = 0
+		self.y_move_factor = 0
+		super().__init__()
 		return
 
 	def blit(self):
-		for action, resp in zip(self.actions, self.responses):
-			if action():
-				resp()
-		self.screen.blit(self.mask, (self.x, self.y))
+		self.smooth()
+		self.screen.blit(self.img, self.x, self.y)
 		return
 
-	def up(self):
-		pass
+	def smooth(self):
+		if self.smooth_x:
+			self.x += self.smoother_x
+			self.remain_smooth_x -= 1
+		if self.smooth_y:
+			self.y += self.smoother_y
+			self.remain_smooth_y -= 1
+		if self.remain_smooth_x == 0:
+			self.smooth_x = False
+		if self.remain_smooth_y == 0:
+			self.smooth_y = False
+		return
 
-	def down(self):
-		pass
 
-	def right(self):
-		pass
-
-	def left(self):
-		pass
+	def move_smoothly(self, direction, factor, frames):
+		if direction == "x":
+			self.smooth_x = True
+			self.remain_smooth_x = frames
+			self.smoother_x = factor / self.remain_smooth_x
+		elif direction == "y":
+			self.smooth_y = True
+			self.remain_smooth_y = frames
+			self.smoother_y = factor / self.remain_smooth_y
+		return

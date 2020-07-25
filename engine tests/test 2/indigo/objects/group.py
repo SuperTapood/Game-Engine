@@ -60,9 +60,22 @@ class Group:
 	def eliminate(self, func):
 		for obj in self:
 			if func(obj):
-				self.objects.remove(obj)
+				self.kill(obj)
+		return
+
+	def kill(self, obj):
+		self.objects.remove(obj)
 		return
 
 	def __len__(self):
 		return len(self.objects)
+
+	def equalize(self, leng, fillage):
+		## fill the group with the fillage until it has length leng ##
+		pass
+
+	def process_event(self, event):
+		for obj in self.objects:
+			obj.process_event(event)
+		return
 	pass
