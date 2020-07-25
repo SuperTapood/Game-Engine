@@ -1,6 +1,8 @@
 import inspect
 from ..image import Image
 from ..exceptions import NonKillableObjectError
+from ..exceptions import CollideResponseError
+from ..exceptions import CollideTypeError
 
 ## this is seemingly useless, but this will handle collision later on ##
 ## the engine object meta classes will talk to each other ##
@@ -8,7 +10,7 @@ from ..exceptions import NonKillableObjectError
 
 class Engine_Object:
 	def __init__(self):
-		self.type = "Engine_Object"
+		self.object_type = "Engine_Object"
 		try:
 			# if this is a img given object, make sure it has a valid image
 			if type(self.img) == str:
@@ -38,44 +40,10 @@ class Engine_Object:
 		try:
 			return self.rect
 		except AttributeError:
-			return self.img.get_rect()
+			return self.x, self.y, self.img.get_rect().w, self.img.get_rect().h
 		return
 
-	def check_coll(self, other):
-		ox, oy, ow, oh = other.get_rekt()
-		x, y, w, h = self.get_rekt()
-		return ox < x < ox + ow and oy < y < oy + oh
-
-	def check_for_collision(self, other, dokilla=False, dokillb=False, respa=lambda:None, respb=lambda:None):
-		if self.check_coll(other):
-			respa()
-			respb()
-			if dokilla:
-				if not "kill" in dir(self):
-					raise NonKillableObjectError(self)
-				else:
-					self.kill()
-			if dokillb:
-				if not "kill" in dir(other):
-					raise NonKillableObjectError(other)
-				else:
-					other.kill()
-		return
-
-	def check_group_collide(self, group, dokilla=False, dokillb=False, respa=lambda:None, respb=lambda:None):
-		for obj in group:
-			print(self.check_coll(obj))
-			if self.check_coll(obj):
-				respa()
-				respb()
-				if dokilla:
-					if not "kill" in dir(self):
-						raise NonKillableObjectError(self)
-					else:
-						self.kill()
-				if dokillb:
-					if not "kill" in dir(group):
-						raise NonKillableObjectError(obj)
-					else:
-						group.kill(obj)
+	def set_rect(self):
+		_, _, self.w, self.h = self.get_rekt()
+		self.rect = self.img.get_rect()
 		return

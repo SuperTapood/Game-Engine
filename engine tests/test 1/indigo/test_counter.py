@@ -1,6 +1,8 @@
 import numpy as np
 from time import time
 
+# test spf counter
+
 class Test_Counter:
 	def __init__(self):
 		self.times = np.array([])
@@ -16,3 +18,4 @@ class Test_Counter:
 
 	def __str__(self):
 		return f"{np.mean(self.times)}"
+	pass

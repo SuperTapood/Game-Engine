@@ -9,6 +9,9 @@ The is currently no ready version of the engine, the latest one is in the folder
 the old game engine will be deleted once it is fully depcrecated.
 
 
-## Engine Tests Status - 
-### Test 1 - Tic Tac Toe
-- engine passed with an average SPF of 0.0009691522105062035
+
+## ENGINE TESTS:
+### TEST 1 - PASSED
+7/25/2020 - updated engine to make sure it works here too
+
+### TEST 2 - PASSED

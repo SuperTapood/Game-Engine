@@ -1,3 +1,5 @@
+# a cute little fps counter
+
 from time import time
 
 

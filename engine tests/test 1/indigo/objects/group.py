@@ -1,10 +1,12 @@
 from ..exceptions import GroupAddError
 from .engine_object import Engine_Object
+from ..exceptions import CollideResponseError
+from ..exceptions import CollideTypeError
 
 class Group:
 	def __init__(self):
 		self.objects = []
-		self.type = "Group"
+		self.object_type = "Group"
 		return
 
 	def __add__(self, other):
@@ -17,9 +19,9 @@ class Group:
 
 	def append(self, other):
 		try:
-			if other.type == Group:
+			if other.object_type == Group:
 				self.objects.multi_add(other.dismantle())
-			elif other.type == "Engine_Object":
+			elif other.object_type == "Engine_Object":
 				self.objects.append(other)
 		except AttributeError:
 			raise GroupAddError(other, type(other))
@@ -56,4 +58,29 @@ class Group:
 		class_name = self.__class__.__name__
 		memory_location = hex(id(self))
 		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def eliminate(self, func):
+		for obj in self:
+			if func(obj):
+				self.kill(obj)
+		return
+
+	def kill(self, obj):
+		self.objects.remove(obj)
+		return
+
+	def __len__(self):
+		return len(self.objects)
+
+	def equalize(self, leng, fillage):
+		## fill the group with the fillage until it has length leng ##
+		pass
+
+	def process_event(self, event):
+		for obj in self.objects:
+			obj.process_event(event)
+		return
+
+	def __getitem__(self, index):
+		return self.objects[index]
 	pass
