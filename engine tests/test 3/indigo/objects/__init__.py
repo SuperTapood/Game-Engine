@@ -6,3 +6,4 @@ from .placeholder import Placeholder
 from .player import Player
 from .label import Label
 from .animation import Animation
+from .engine_object import Engine_Object

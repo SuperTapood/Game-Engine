@@ -16,3 +16,4 @@ from .objects import Group
 from .objects import Player
 from .objects import Label
 from .objects import Animation
+from .objects import Engine_Object

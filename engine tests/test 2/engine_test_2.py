@@ -90,8 +90,6 @@ class Meteor(Placeholder):
 
 
 if __name__ == "__main__":
-	print(1 / 0.007917278051376342)
-	exit()
 	gravity = 1
 	score = 0
 	scr = Screen(700, 700, BLACK, "SPACE INVADERS")
@@ -116,7 +114,7 @@ if __name__ == "__main__":
 		ship.blit()
 		bullets.blit()
 		splodes.blit()
-		splodes.eliminate(lambda obj: obj.wd == len(obj.images))
+		splodes.eliminate(lambda obj: obj.index == len(obj.images))
 		meteors.eliminate(lambda obj: obj.x >= 700 or obj.y >= 700)
 		if len(meteors) < max_meteors:
 			meteors.append(meteor.deploy(random.randint(0, 650), -50,  random.uniform(0.5, 1.5)))

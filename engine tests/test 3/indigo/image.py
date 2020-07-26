@@ -65,3 +65,7 @@ class Image:
 		out = f"{obj} with dimensions {dims}\n"
 		return out
 
+	def rotate(self, ang):
+		self.image = pygame.transform.rotate(self.image, ang)
+		return
+

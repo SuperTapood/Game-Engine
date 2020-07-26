@@ -83,4 +83,10 @@ class Group:
 
 	def __getitem__(self, index):
 		return self.objects[index]
-	pass
+
+	def fit(self, func):
+		do_fit = []
+		for obj in self:
+			if func(obj):
+				do_fit.append(obj)
+		return do_fit

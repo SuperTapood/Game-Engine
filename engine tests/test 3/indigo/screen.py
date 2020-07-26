@@ -51,3 +51,12 @@ class Screen:
 	def set_bg_img(self, bg_img):
 		self.blit(bg_img, 0, 0)
 		return
+
+	def resize_for_bg(self, bg_img):
+		rect = bg_img.get_rect()
+		self.resize(rect.w, rect.h)
+		self.set_bg_img(bg_img)
+		return
+
+	def resize(self, x, y):
+		self.display = pygame.display.set_mode((x, y))
