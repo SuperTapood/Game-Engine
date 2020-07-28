@@ -17,7 +17,7 @@ make import look like this - from indigo.SUB-MODULE import
 full screen option
 
 #### General Objects
-circle, button with borders, input field, text button, picture buttons, circle buttons, n-sided shapes, buttons with effects
+circle, button with borders, input field, text button, picture buttons, circle buttons, n-sided shapes, buttons with effects, add collision methods to player, group and placeholder
 
 #### Music Player
 Use pygame.mixer to play sounds. Add a Music_Player object to play and set and all that.
