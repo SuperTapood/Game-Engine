@@ -12,6 +12,27 @@ class Group:
 	def __add__(self, other):
 		return self.append(other)
 
+	def __str__(self):
+		out = f"{repr(self)} Summary: \n\n"
+		for i, obj in enumerate(self.dismantle()):
+			out += f"Group Layer {i} - {str(obj)}\n"
+		return out
+
+	def __iter__(self):
+		return iter(self.objects)
+
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def __len__(self):
+		return len(self.objects)
+
+	def __getitem__(self, index):
+		return self.objects[index]
+
 	def multi_add(self, *objs):
 		for obj in objs:
 			self.objects.append(obj)
@@ -35,12 +56,6 @@ class Group:
 			yield obj
 		return
 
-	def __str__(self):
-		out = f"{repr(self)} Summary: \n\n"
-		for i, obj in enumerate(self.dismantle()):
-			out += f"Group Layer {i} - {str(obj)}\n"
-		return out
-
 	def blit(self):
 		for obj in self.objects:
 			obj.blit()
@@ -49,15 +64,6 @@ class Group:
 	def summary(self):
 		print(str(self))
 		return
-
-	def __iter__(self):
-		return iter(self.objects)
-
-	def __repr__(self):
-		module = self.__class__.__module__
-		class_name = self.__class__.__name__
-		memory_location = hex(id(self))
-		return f"<{module}.{class_name} object at {memory_location}>"
 
 	def eliminate(self, func):
 		for obj in self:
@@ -69,9 +75,6 @@ class Group:
 		self.objects.remove(obj)
 		return
 
-	def __len__(self):
-		return len(self.objects)
-
 	def equalize(self, leng, fillage):
 		## fill the group with the fillage until it has length leng ##
 		pass
@@ -80,9 +83,6 @@ class Group:
 		for obj in self.objects:
 			obj.process_event(event)
 		return
-
-	def __getitem__(self, index):
-		return self.objects[index]
 
 	def fit(self, func):
 		do_fit = []

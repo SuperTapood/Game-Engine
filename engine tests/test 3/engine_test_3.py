@@ -68,8 +68,8 @@ class Base(Engine_Object):
 
 
 if __name__ == "__main__":
-	print(1 / 0.004126925945281982)
-	exit()
+	# print(1 / 0.004126925945281982)
+	# exit()
 	scr = Screen(700, 700, BLACK, "FLAPPY BIRD")
 	scr.resize_for_bg(Image("test_3_assets\\bg.png").get_img())
 	bases = Group()

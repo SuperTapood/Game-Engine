@@ -13,7 +13,6 @@ def collision(sprite1, sprite2):
 
 def check_valid_resp(resp):
 	if len(signature(resp).parameters) != 2:
-		print(len(signature(resp).parameters))
 		raise CollideResponseError(resp.__name__)
 	return
 
