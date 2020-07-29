@@ -1,5 +1,7 @@
 from ..exceptions import PlaceholderBlitError
+from ..exceptions import CollideTypeError
 from .engine_object import Engine_Object
+from ...collision import sprite_sprite_collision, sprite_group_collision
 
 
 class Placeholder(Engine_Object):
@@ -22,4 +24,16 @@ class Placeholder(Engine_Object):
 			raise PlaceholderBlitError(self, self.x, self.y)
 		else:
 			self.scr.blit(self.img, self.x, self.y)
+		return
+
+	def check_collide(self, other, resp):
+		if hasattr(other, "object_type"):
+			if other.object_type == "Group":
+				sprite_group_collision(self, other, resp)
+			elif other.object_type == "Engine_Object":
+				sprite_sprite_collision(self, other, resp)
+			else:
+				raise CollideTypeError(type(other).__name__)
+		else:
+			raise CollideTypeError(type(other).__name__)
 		return

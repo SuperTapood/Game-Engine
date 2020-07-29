@@ -1,7 +1,7 @@
 from ..exceptions import GroupAddError
 from .engine_object import Engine_Object
-from ..exceptions import CollideResponseError
 from ..exceptions import CollideTypeError
+from ...collision import group_group_collision, sprite_group_collision
 
 class Group:
 	def __init__(self):
@@ -90,3 +90,15 @@ class Group:
 			if func(obj):
 				do_fit.append(obj)
 		return do_fit
+
+	def check_collide(self, other, resp):
+		if hasattr(other, "object_type"):
+			if other.object_type == "Group":
+				group_group_collision(self, other, resp)
+			elif other.object_type == "Engine_Object":
+				sprite_group_collision(self, other, resp)
+			else:
+				raise CollideTypeError(type(other).__name__)
+		else:
+			raise CollideTypeError(type(other).__name__)
+		return

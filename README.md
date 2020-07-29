@@ -12,9 +12,10 @@ the old game engine will be deleted once it is fully depcrecated.
 
 # TODO
 
-#### General Objects
-picture buttons, circle buttons, n-sided shapes, add collision methods to player, group and placeholder
+#### ADD SOME BLOODY DOCUMENTATION YOU MORON
 
+#### General Objects
+picture buttons, circle buttons, n-sided shapes
 
 #### Music Player
 it didn't work for some god-forsaken reason
