@@ -15,8 +15,9 @@ the old game engine will be deleted once it is fully depcrecated.
 #### General Objects
 picture buttons, circle buttons, n-sided shapes, add collision methods to player, group and placeholder
 
+
+#### Music Player
+it didn't work for some god-forsaken reason
+
 #### Video Player
 Use the music player, cv2 and pygame.surfarray.make_surface to turn a read image to a numpy array and then to a presentable image at a certain frame rate (maybe even figure it out on its own)
-
-#### File Loader
-load files based on type, location, prefix and any combination. proceeds to load them based on their type.

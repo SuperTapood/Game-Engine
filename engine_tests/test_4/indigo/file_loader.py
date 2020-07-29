@@ -1,21 +1,17 @@
 import os
-from .players import Video_Player, Music_Player
 from .image import Image
+from .exceptions import UnsupportedExtensionError
 
-sound_extensions = ["ogg"]
-video_extensions = ["mp4", "webm"]
+
+sound_extensions = []
+video_extensions = []
 image_extension = ["png", "jpeg", "jpg"]
-
-def load_sound(loc):
-	return Music_Player(loc)
-
-def load_video(loc):
-	return Video_Player(loc)
 
 def load_image(loc):
 	return Image(loc)
 
 def load_file(path, file):
+	print(file)
 	ext = file.split(".")[1]
 	loc = path + "\\" + file
 	out = ""
@@ -25,9 +21,8 @@ def load_file(path, file):
 		out = load_video(loc)
 	elif ext in image_extension:
 		out = load_image(loc)
-	else:
-		# raise UnsupportedExtensionError(file, loc, ext)
-		pass
+	elif ext != "ini":
+		raise UnsupportedExtensionError(file, loc, ext)
 	return out
 
 
@@ -35,4 +30,26 @@ def load_all(path):
 	out = []
 	for file in os.listdir(path):
 		out.append(load_file(path, file))
+	return out
+
+def load_type(path, ext):
+	out = []
+	for file in os.listdir(path):
+		if file.split(".")[1] == ext:
+			out.append(load_file(path, file))
+	return out
+
+def load_prefix(path, prefix):
+	out = []
+	for file in os.listdir(path):
+		if file != "desktop.ini":
+			if file.split(".")[0][:len(prefix)] == prefix:
+				out.append(load_file(path, file))
+	return out
+
+def load_type_prefix(path, prefix, ext):
+	out = []
+	for file in os.listdir(path):
+		if file.split(".")[0][:len(prefix)] == prefix and file.split(".")[1] == ext:
+			out.append(load_file(path, file))
 	return out

@@ -24,3 +24,4 @@ from .nonkillableObjectError   import NonKillableObjectError
 from .collideResponseError     import CollideResponseError
 from .collideTypeError         import CollideTypeError
 from .invalidBorderButtonError import InvalidBorderButtonError
+from .unsupportedExtensionError import UnsupportedExtensionError
