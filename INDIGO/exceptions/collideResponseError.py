@@ -4,6 +4,9 @@ class CollideResponseError(Exception):
 	# raised when the engine tries to call a collide response function with 
 	# other then 2 arguments (collider1, collider2)
 	def __init__(self, func_name):
+		"""
+		func func_name - the function that doesnt fit for collision response
+		"""
 		self.func_name = func_name
 		return
 

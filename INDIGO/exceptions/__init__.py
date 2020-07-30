@@ -17,11 +17,12 @@ class exception(Exception):
 	pass
 """
 
-from .groupAddError            import GroupAddError
-from .placeholderBlitError     import PlaceholderBlitError
-from .overrideError            import OverrideError
-from .nonkillableObjectError   import NonKillableObjectError
-from .collideResponseError     import CollideResponseError
-from .collideTypeError         import CollideTypeError
-from .invalidBorderButtonError import InvalidBorderButtonError
+from .groupAddError             import GroupAddError
+from .placeholderBlitError      import PlaceholderBlitError
+from .overrideError             import OverrideError
+from .nonkillableObjectError    import NonKillableObjectError
+from .collideResponseError      import CollideResponseError
+from .collideTypeError          import CollideTypeError
+from .invalidBorderButtonError  import InvalidBorderButtonError
 from .unsupportedExtensionError import UnsupportedExtensionError
+from .invalidDeployableError    import InvalidDeployableError

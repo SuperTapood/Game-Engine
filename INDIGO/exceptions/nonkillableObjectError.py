@@ -3,6 +3,9 @@ class NonKillableObjectError(Exception):
 
 	# raised when the engine tries to kill a non killable object
 	def __init__(self, obj):
+		"""
+		object obj - the object that cannot be killed
+		"""
 		self.obj = obj
 		return
 

@@ -5,10 +5,6 @@ from time import time
 
 class Button(Engine_Object):
 	def __init__(self, scr, x, y, w, h, color, resp, border_width=0):
-		"""
-		Screen scr - the screen to blit on
-		x, y, w, h - the loc to blit on and the size
-		"""
 		self.resp = resp
 		self.display = scr
 		self.rect = (x, y,w ,h)
