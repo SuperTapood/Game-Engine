@@ -1,15 +1,20 @@
 from ..exceptions import PlaceholderBlitError
 from ..exceptions import CollideTypeError
+from ..exceptions import InvalidDeployableError
 from .engine_object import Engine_Object
 from ...collision import sprite_sprite_collision, sprite_group_collision
+from inspect import signature
 
 
 class Placeholder(Engine_Object):
-	def __init__(self, scr, img, x=None, y=None):
+	def __init__(self, scr, img, x=None, y=None, delpoyable=Placeholder):
 		self.scr = scr
 		self.img = img
 		self.x = x
 		self.y = y
+		if len(signature(delpoyable).__init__) != 2:
+			raise InvalidDeployableError(delpoyable.__name__)
+		self.delpoyable = delpoyable
 		super().__init__()
 		return
 
@@ -17,7 +22,7 @@ class Placeholder(Engine_Object):
 		return self.clone(x, y)
 
 	def clone(self, x, y):
-		return Placeholder(self.scr, self.img, x, y)
+		return self.delpoyable(self.scr, self.img, x, y)
 
 	def blit(self):
 		if self.x is None or self.y is None:

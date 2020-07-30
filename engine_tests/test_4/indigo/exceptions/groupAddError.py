@@ -4,8 +4,8 @@ class GroupAddError(Exception):
 
 	def __init__(self, inst, class_type):
 		"""
-		instance inst - the illegal instance that is added to a group
-		type class_type - the type of instance inst
+		instance inst - the instance of class class type that is being tried to be added to the group
+		class type class_type - the pythonic expression of the class type of instance inst (which needs to beautification)
 		"""
 		self.type = str(class_type)[7:]
 		self.type = self.type[:-1]

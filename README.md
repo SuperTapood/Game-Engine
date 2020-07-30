@@ -14,9 +14,6 @@ the old game engine will be deleted once it is fully depcrecated.
 
 #### ADD SOME BLOODY DOCUMENTATION YOU MORON
 
-#### General Objects
-picture buttons, circle buttons, n-sided shapes, maybe deploy players from the placeholders
-
 #### Music Player
 it didn't work for some god-forsaken reason
 
