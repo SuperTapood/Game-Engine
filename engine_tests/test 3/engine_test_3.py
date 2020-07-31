@@ -114,7 +114,7 @@ if __name__ == "__main__":
 		Label(scr, str(score), 20, 20, 50, WHITE).blit()
 		for event in pygame.event.get():
 			scr.quit_handler(event)
-			if event.type == pygame.KEYDOWN:
+			if event.type == pygame.locals.KEYDOWN:
 				if event.unicode == " ":
 					bird.flap()
 		bird.fall()
