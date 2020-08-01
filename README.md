@@ -14,6 +14,10 @@ the old game engine will be deleted once it is fully depcrecated.
 
 #### ADD SOME BLOODY DOCUMENTATION YOU MORON
 
+#### General
+optimize border button to require less params
+set the button of the border button to the bigger rect
+
 #### Music Player
 it didn't work for some god-forsaken reason
 
