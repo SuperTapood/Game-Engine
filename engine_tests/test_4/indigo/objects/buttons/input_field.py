@@ -3,6 +3,14 @@ from .text_button import Text_Button
 
 class Input_Field(Engine_Object):
 	def __init__(self, scr, x, y, txt_size, txt_color, button_color, max_len):
+		"""
+		Screen scr - the screen object
+		num x, y - the loc of the input field
+		int txt_size - the size of the text
+		tup txt_color - the color of the button
+		tup button_color - the color of the button
+		int max_len - the max length of the text
+		"""
 		self.max_len = max_len
 		self.txt = ""
 		self.active = False
@@ -10,6 +18,7 @@ class Input_Field(Engine_Object):
 		return
 
 	def get_text(self):
+		# get the text and modify it for the text button
 		if len(self.txt) == self.max_len:
 			out = self.txt
 		elif len(self.txt) > self.max_len:

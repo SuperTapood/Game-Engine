@@ -2,7 +2,13 @@ from ..engine_object import Engine_Object
 from pygame.mouse import get_pos, get_pressed
 
 class Image_Button(Engine_Object):
-	def __init__(self, scr, img, x, y, resp):
+	def __init__(self, scr, img, x, y, resp=lambda:None):
+		"""
+		Screen scr - the screen object
+		pygame image img / str - the image or its location
+		num x, y - the location of the button
+		func resp - the response for a click
+		"""
 		self.scr = scr
 		self.img = img
 		self.x = x

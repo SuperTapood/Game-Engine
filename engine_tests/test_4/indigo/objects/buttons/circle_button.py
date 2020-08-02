@@ -3,7 +3,7 @@ from ..shapes import Circle, Rect
 from pygame.mouse import get_pos, get_pressed
 
 class Circle_Button(Engine_Object):
-	def __init__(self, scr, color, x, y, radius, resp, width=0):
+	def __init__(self, scr, color, x, y, radius, resp=lambda:None, width=0):
 		"""
 		Screen scr - the screen object
 		tup color - the color of the circle

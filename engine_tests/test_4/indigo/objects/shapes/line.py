@@ -3,6 +3,12 @@ from pygame.draw import line
 
 class Line(Engine_Object):
 	def __init__(self, start_x, start_y, end_x, end_y, width, color, scr):
+		"""
+		num start_x, start_y, end_x, end_y - the locs of the two dots
+		num width - the width of the line
+		tup color - the color of the line
+		Screen scr - the screen object
+		"""
 		self.x1 = start_x
 		self.x2 = end_x
 		self.y1 = start_y

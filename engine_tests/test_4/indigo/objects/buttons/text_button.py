@@ -3,7 +3,16 @@ from ..label import Label
 from ..engine_object import Engine_Object
 
 class Text_Button(Engine_Object):
-	def __init__(self, scr, txt, x, y, txt_size, txt_color, button_color, resp, button_width=0):
+	def __init__(self, scr, txt, x, y, txt_size, txt_color, button_color, resp=lambda:None, button_width=0):
+		"""
+		Screen scr - the screen object
+		str txt - the text to blitted on screen
+		num x, y - the loc of the button
+		int txt_size - the size of the text
+		tup txt_color, button_color - the colors of the text and the button
+		func resp - the response to a click
+		num border_width - the border's width
+		"""
 		self.att_tuple = (scr, x, y, txt_size, txt_color, button_color, resp, button_width)
 		rect = Label(scr, txt, x, y, txt_size, txt_color).get_rekt()
 		x, y, w, h = rect
