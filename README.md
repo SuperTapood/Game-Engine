@@ -15,7 +15,7 @@ the old game engine will be deleted once it is fully depcrecated.
 ### ADD SOME BLOODY DOCUMENTATION YOU MORON
 
 #### General
-optimize border button to require less params \n
+optimize border button to require less params,
 set the button of the border button to the bigger rect
 button master class
 improve the g-damn engine object master class and its usage
