@@ -19,19 +19,19 @@ optimize border button to require less params
 set the button of the border button to the bigger rect  
 button master class  
 improve the g-damn engine object master class and its usage  
-add __new__ to engine object to prevent the need for super().__init__()
-add **kwargs to button master class cut some code down the line
-implement click delay in all buttons
-border input field
-mash everything into one massive file?
-loading screen special group?
-update Circle rect
-repuprpose method? set as? (button and such)
-allow shapes to be players
-polygon buttons
-ellipse
-ellipse button
-add __str__ to everything everything
+add __new__ to engine object to prevent the need for super().__init__()  
+add **kwargs to button master class cut some code down the line  
+implement click delay in all buttons  
+border input field  
+mash everything into one massive file?  
+loading screen special group?  
+update Circle rect  
+repuprpose method? set as? (button and such)  
+allow shapes to be players  
+polygon buttons  
+ellipse  
+ellipse button  
+add __str__ to everything everything  
 
 #### Music Player
 it didn't work for some god-forsaken reason
