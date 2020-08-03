@@ -13,7 +13,7 @@ class Group:
 		return self.append(other)
 
 	def __str__(self):
-		out = f"{repr(self)} Summary: \n\n"
+		out = f"Group {repr(self)} Summary: \n\n"
 		for i, obj in enumerate(self.dismantle()):
 			out += f"Group Layer {i} - {str(obj)}\n"
 		return out

@@ -2,7 +2,7 @@ from ..engine_object import Engine_Object
 from .text_button import Text_Button
 
 class Input_Field(Engine_Object):
-	def __init__(self, scr, x, y, txt_size, txt_color, button_color, max_len):
+	def __init__(self, scr, x, y, txt_size, txt_color, button_color, max_len, delay_time=0.3):
 		"""
 		Screen scr - the screen object
 		num x, y - the loc of the input field
@@ -14,7 +14,7 @@ class Input_Field(Engine_Object):
 		self.max_len = max_len
 		self.txt = ""
 		self.active = False
-		self.button = Text_Button(scr, self.get_text(), x, y, txt_size, txt_color, button_color, self.change_active_state)
+		self.button = Text_Button(scr, self.get_text(), x, y, txt_size, txt_color, button_color, self.change_active_state, delay_time)
 		return
 
 	def get_text(self):

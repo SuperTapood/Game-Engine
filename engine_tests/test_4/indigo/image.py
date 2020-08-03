@@ -69,3 +69,6 @@ class Image:
 		self.image = pygame.transform.rotate(self.image, ang)
 		return
 
+	def get_rect(self):
+		return self.get_img().get_rect()
+

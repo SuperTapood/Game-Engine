@@ -15,7 +15,6 @@ class Placeholder(Engine_Object):
 		if len(signature(delpoyable).__init__) != 2:
 			raise InvalidDeployableError(delpoyable.__name__)
 		self.delpoyable = delpoyable
-		super().__init__()
 		return
 
 	def deploy(self, x, y):
@@ -28,6 +27,7 @@ class Placeholder(Engine_Object):
 		if self.x is None or self.y is None:
 			raise PlaceholderBlitError(self, self.x, self.y)
 		else:
+			self.rect = self.get_rekt()
 			self.scr.blit(self.img, self.x, self.y)
 		return
 
@@ -42,3 +42,12 @@ class Placeholder(Engine_Object):
 		else:
 			raise CollideTypeError(type(other).__name__)
 		return
+
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def __str__(self):
+		return f"Placeholder {repr(self)} at location ({self.x}, {self.y}) which deploys {self.delpoyable}"

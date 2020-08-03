@@ -1,8 +1,6 @@
-from indigo.objects.shapes import Polygon
+from indigo.objects.buttons import Input_Field
 from indigo import Screen
 from indigo.colors import *
-from pygame.draw import polygon
-
 
 
 
@@ -10,7 +8,8 @@ from pygame.draw import polygon
 
 if __name__ == "__main__":
 	scr = Screen(500, 500, BLACK)
-	btn = Polygon(scr, WHITE, (75, 75), (125, 125), (325, 100), (550, 10))
+	btn = Input_Field(scr, scr.MIDDLEX, scr.MIDDLEY, 20, WHITE, GREEN, 5)
 	while True:
 		btn.blit()
+		print(btn.active)
 		scr.update()

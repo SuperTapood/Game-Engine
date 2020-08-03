@@ -16,11 +16,16 @@ class Line(Engine_Object):
 		self.color = color
 		self.width = width
 		self.display = scr
-		super().__init__()
 		return
 
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
 	def __str__(self):
-		return f"Line from ({self.x1}, {self.y1}) to ({self.x2}, {self.y2})"
+		return f"Line {repr(self)} from ({self.x1}, {self.y1}) to ({self.x2}, {self.y2})"
 
 	def blit(self):
 		line(self.display, self.color, (self.x1, self.y1), (self.x2, self.y2), self.width)

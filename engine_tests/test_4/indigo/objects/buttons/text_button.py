@@ -16,6 +16,7 @@ class Text_Button(Engine_Object):
 		self.att_tuple = (scr, x, y, txt_size, txt_color, button_color, resp, button_width)
 		rect = Label(scr, txt, x, y, txt_size, txt_color).get_rekt()
 		x, y, w, h = rect
+		self.pos = (x, y)
 		self.button = Button(scr, x, y, w, h, button_color, resp, button_width)
 		self.text = Label(scr, txt, x, y, txt_size, txt_color)
 		return
@@ -32,3 +33,12 @@ class Text_Button(Engine_Object):
 		self.button = Button(scr, x, y, w, h, button_color, resp, button_width)
 		self.text = Label(scr, new_txt, x, y, txt_size, txt_color)
 		return
+
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def __str__(self):
+		return f"Text Button of text {self.text.txt} at {self.pos}"

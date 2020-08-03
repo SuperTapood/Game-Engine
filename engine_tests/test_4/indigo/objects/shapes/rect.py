@@ -14,9 +14,17 @@ class Rect(Engine_Object):
 		self.color = color
 		self.rect = (x, y, w, h)
 		self.width = width
-		super().__init__()
 		return
 		
 	def blit(self):
 		rect(self.scr.display, self.color, self.rect, self.width)
 		return
+
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def __str__(self):
+		return f"Rect {repr(self)} of rect {self.rect}"
