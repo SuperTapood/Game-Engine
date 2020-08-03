@@ -1,25 +1,24 @@
 from ..engine_object import Engine_Object
+from .button_meta import Button_Meta
 from pygame.mouse import get_pos, get_pressed
 
-class Image_Button(Engine_Object):
-	def __init__(self, scr, img, x, y, resp):
+class Image_Button(Button_Meta):
+	def __init__(self, scr, img, x, y, resp=lambda:None, delay_time=0.3):
+		"""
+		Screen scr - the screen object
+		pygame image img / str - the image or its location
+		num x, y - the location of the button
+		func resp - the response for a click
+		"""
 		self.scr = scr
 		self.img = img
 		self.x = x
 		self.y = y
 		self.resp = resp
-		super().__init__()
 		self.rect = self.get_rekt()
+		self.delay_time = delay_time
 		return
 
-	def blit(self):
+	def blit_func(self):
 		self.scr.blit(self.img, self.x, self.y)
-		if self.check_click():
-			self.resp()
 		return
-
-	def check_click(self):
-		mouse = get_pos()
-		click = get_pressed()
-		x, y, w, h = self.rect
-		return x + w > mouse[0] > x and y + h > mouse[1] > y and click[0] == 1

@@ -8,9 +8,8 @@ class exception(Exception):
 	__module__ = Exception.__module__
 	
 	# get the message that was raised with the exception
-	def __init__(self, msg):
-		self.msg = msg
-		return
+	def __init__(self, params):
+		pass
 	def __str__(self):
 		# return the message that will be printed at the end of the exception
 		return str

@@ -9,16 +9,7 @@ from ..exceptions import CollideTypeError
 ## to decide if a collision was made ##
 
 class Engine_Object:
-	def __init__(self):
-		self.object_type = "Engine_Object"
-		try:
-			# if this is a img given object, make sure it has a valid image
-			if type(self.img) == str:
-				self.img = Image(self.img).get_img()
-		except AttributeError:
-			pass
-		return
-
+	object_type = "Engine_Object"
 	# we also got this sick useless function
 	def get_attributes(self, output=False):
 		att_dict = {}
@@ -34,16 +25,24 @@ class Engine_Object:
 		return att_dict
 
 	def process_event(self, event):
+		## placeholder method ##
 		pass
 
 	def get_rekt(self):
 		try:
 			return self.rect
 		except AttributeError:
-			return self.x, self.y, self.img.get_rect().w, self.img.get_rect().h
+			self.__set_rect()
+			return self.get_rekt()
 		return
 
-	def set_rect(self):
-		_, _, self.w, self.h = self.get_rekt()
+	def __set_rect(self):
+		if type(self.img) == str:
+			self.img = Image(self.img).get_img()
 		self.rect = self.img.get_rect()
+		x = self.rect.x
+		y = self.rect.y
+		w = self.rect.width
+		h = self.rect.height
+		self.rect = self.x, self.y, w, h
 		return

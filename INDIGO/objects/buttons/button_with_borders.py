@@ -4,15 +4,21 @@ from .button import Button
 from ..shapes import Rect
 
 class Button_With_Borders(Engine_Object):
-	def __init__(self, scr, x, y, w1, h1, color1, w2, h2, color2, resp):
-		if w1 < w2 or h1 < h2:
-			raise InvalidBorderButtonError(w1, h1, w2, h2)
-		self.rect = Rect(scr, color1, x, y, w1, h1)
-		self.button = Button(scr, x + ((w1 - w2) / 2), y + ((h1 - h2) / 2), w2, h2, color2, resp)
+	def __init__(self, scr, x, y, w, h, color1, color2, size_factor=1, resp=lambda:None, delay_time=0.3):
+		"""
+		Screen scr - the screen object
+		num x, y, w1, h1, w2, h2 - the loc and sizes of the two buttons
+		tup color1, color2 - the colors of the two buttons
+		func resp - the response to the click
+		"""
+		if size_factor < 1:
+			raise InvalidBorderButtonError(w, h, w * size_factor, h * size_factor)
+		self.rect = Rect(scr, color1, x, y, w, h)
+		self.button = Button(scr, x + ((w - w * size_factor) / 2), y + ((h - h * size_factor) / 2), w * size_factor, h * size_factor, color2, resp, delay_time)
 		return
 
 	def blit(self):
-		self.rect.blit()
 		self.button.blit()
+		self.rect.blit()
 		return
 	pass

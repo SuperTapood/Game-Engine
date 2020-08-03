@@ -9,6 +9,7 @@ class Player(Engine_Object):
 		self.screen = scr
 		self.x = x
 		self.y = y
+		self.img_name = img
 		self.img = img
 		self.remain_smooth_x = 0
 		self.remain_smooth_y = 0
@@ -16,7 +17,7 @@ class Player(Engine_Object):
 		self.smooth_y = False
 		self.x_move_factor = 0
 		self.y_move_factor = 0
-		super().__init__()
+		self.rect = self.get_rekt()
 		return
 
 	def blit(self):
@@ -60,3 +61,12 @@ class Player(Engine_Object):
 		else:
 			raise CollideTypeError(type(other).__name__)
 		return
+
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
+	def __str__(self):
+		return f"Player {repr(self)} of img {self.img_name} at location ({self.x}, {self.y})"

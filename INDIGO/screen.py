@@ -1,5 +1,4 @@
 import pygame
-from pygame.locals import *
 from time import time
 
 
@@ -70,21 +69,25 @@ class Screen:
 	    screen = pygame.display.get_surface()
 	    tmp = screen.convert()
 	    caption = pygame.display.get_caption()
-	    cursor = pygame.mouse.get_cursor()  # Duoas 16-04-2007 
-	    
+	    cursor = pygame.mouse.get_cursor()
 	    w,h = screen.get_width(),screen.get_height()
 	    flags = screen.get_flags()
 	    bits = screen.get_bitsize()
-	    
 	    pygame.display.quit()
 	    pygame.display.init()
-	    
 	    self.display = pygame.display.set_mode((w,h),flags^FULLSCREEN,bits)
 	    self.display.blit(tmp,(0,0))
 	    pygame.display.set_caption(*caption)
-
-	    pygame.key.set_mods(0) #HACK: work-a-round for a SDL bug??
-
-	    pygame.mouse.set_cursor( *cursor )  # Duoas 16-04-2007
-	    
+	    pygame.key.set_mods(0)
+	    pygame.mouse.set_cursor( *cursor )
 	    return
+
+	def __repr__(self):
+		module = self.__class__.__module__
+		class_name = self.__class__.__name__
+		memory_location = hex(id(self))
+		return f"<{module}.{class_name} object at {memory_location}>"
+
+
+	def __str__(self):
+		return f"Screen {repr(self)} of size {self.X} X {self.Y}"
