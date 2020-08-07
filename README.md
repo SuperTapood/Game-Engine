@@ -16,19 +16,21 @@ the old game engine will be deleted once it is fully depcrecated.
 
 #### General
 border input field\
-mash everything into one massive file?\
-loading screen special group?\
-update Circle rect\
-repuprpose method? set as? (button and such)\
+repuprpose method? set as? (shapes to buttons and players and such)\
 allow shapes to be players\
 ellipse\
 ellipse button\
 add __str__ to everything everything\
 redo the code for animation\
 add change text to a label\
+optimize the text button\
+group fill function\
+add a sanity check\
+exceptions master class (with kwargs and such)\
 
 #### Music Player
-it didn't work for some god-forsaken reason
+player just refuses to work, halting progress on both players
 
 #### Video Player
 Use the music player, cv2 and pygame.surfarray.make_surface to turn a read image to a numpy array and then to a presentable image at a certain frame rate (maybe even figure it out on its own)
+EDIT: there doesn't seem to be a way around using files to play audio, need to extract using ffmpeg and play from that
