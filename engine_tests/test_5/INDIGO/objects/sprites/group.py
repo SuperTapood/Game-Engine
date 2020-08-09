@@ -1,6 +1,6 @@
-from ..exceptions import GroupAddError
-from .engine_object import Engine_Object
-from ..exceptions import CollideTypeError
+from ...exceptions import GroupAddError
+from ..engine_object import Engine_Object
+from ...exceptions import CollideTypeError
 from ...collision import group_group_collision, sprite_group_collision
 
 class Group:
@@ -32,6 +32,14 @@ class Group:
 
 	def __getitem__(self, index):
 		return self.objects[index]
+
+	def __eq__(self, other):
+		func = lambda obj: type(obj) == other
+		return self.fit(func)
+
+	def __ne__(self, other):
+		func = lambda obj: type(obj) != other
+		return self.fit(func)
 
 	def multi_add(self, *objs):
 		for obj in objs:
@@ -101,4 +109,9 @@ class Group:
 				raise CollideTypeError(type(other).__name__)
 		else:
 			raise CollideTypeError(type(other).__name__)
+		return
+
+	def filter(self, array):
+		for obj in array:
+			self.kill(obj)
 		return

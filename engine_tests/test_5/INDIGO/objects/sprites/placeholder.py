@@ -1,13 +1,15 @@
-from ..exceptions import PlaceholderBlitError
-from ..exceptions import CollideTypeError
-from ..exceptions import InvalidDeployableError
-from .engine_object import Engine_Object
+from ...exceptions import PlaceholderBlitError
+from ...exceptions import CollideTypeError
+from ...exceptions import InvalidDeployableError
+from ..engine_object import Engine_Object
 from ...collision import sprite_sprite_collision, sprite_group_collision
 from inspect import signature
 
 
 class Placeholder(Engine_Object):
-	def __init__(self, scr, img, x=None, y=None, delpoyable=Placeholder):
+	def __init__(self, scr, img, x=None, y=None, delpoyable=None):
+		if delpoyable is None:
+			delpoyable = Placeholder
 		self.scr = scr
 		self.img = img
 		self.x = x

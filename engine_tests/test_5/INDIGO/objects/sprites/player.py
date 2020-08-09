@@ -1,7 +1,7 @@
-from .engine_object import Engine_Object
+from ..engine_object import Engine_Object
 from pygame.event import get as get_events
 from ...collision import sprite_sprite_collision, sprite_group_collision
-from ..exceptions import CollideTypeError
+from ...exceptions import CollideTypeError
 
 
 class Player(Engine_Object):

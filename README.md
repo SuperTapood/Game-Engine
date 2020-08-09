@@ -20,7 +20,6 @@ repuprpose method? set as? (shapes to buttons and players and such)\
 allow shapes to be players\
 ellipse\
 ellipse button\
-add __str__ to everything everything\
 redo the code for animation\
 add change text to a label\
 optimize the text button\
