@@ -24,7 +24,6 @@ redo the code for animation\
 add change text to a label\
 optimize the text button\
 group fill function\
-add a sanity check\
 exceptions master class (with kwargs and such)\
 
 #### Music Player
