@@ -65,7 +65,7 @@ class Group:
 		return
 
 	def blit(self):
-		for obj in self.objects:
+		for obj in self:
 			obj.blit()
 		return
 
@@ -88,7 +88,7 @@ class Group:
 		pass
 
 	def process_event(self, event):
-		for obj in self.objects:
+		for obj in self:
 			obj.process_event(event)
 		return
 

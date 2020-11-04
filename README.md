@@ -15,6 +15,7 @@ the old game engine will be deleted once it is fully depcrecated.
 ### ADD SOME BLOODY DOCUMENTATION YOU MORON
 
 #### General
+add create(cls) to Group to add items to group as soon as it is created\
 border input field\
 repuprpose method? set as? (shapes to buttons and players and such)\
 allow shapes to be players\
