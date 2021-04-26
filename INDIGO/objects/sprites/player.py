@@ -1,6 +1,7 @@
 from INDIGO.objects.engine_object import EngineObject
-from INDIGO.exceptions import CollideTypeError
+
 from INDIGO.collision import sprite_sprite_collision, sprite_group_collision
+from INDIGO.exceptions import CollideTypeError
 
 
 class Player(EngineObject):

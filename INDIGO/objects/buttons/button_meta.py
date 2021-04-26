@@ -1,8 +1,7 @@
 from time import time
 
-from pygame.mouse import get_pressed, get_pos
-
 from INDIGO.objects.engine_object import EngineObject
+from pygame.mouse import get_pressed, get_pos
 
 
 class ButtonMeta(EngineObject):

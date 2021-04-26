@@ -1,6 +1,5 @@
-from pygame.draw import polygon
-
 from INDIGO.objects.engine_object import EngineObject
+from pygame.draw import polygon
 
 
 class Polygon(EngineObject):

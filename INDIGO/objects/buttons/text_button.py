@@ -1,5 +1,6 @@
-from INDIGO.objects.buttons.button import Button
 from INDIGO.objects.engine_object import EngineObject
+
+from INDIGO.objects.buttons.button import Button
 from INDIGO.objects.label import Label
 
 

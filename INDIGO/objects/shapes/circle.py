@@ -1,6 +1,5 @@
-from pygame.draw import circle
-
 from INDIGO.objects.engine_object import EngineObject
+from pygame.draw import circle
 
 
 class Circle(EngineObject):

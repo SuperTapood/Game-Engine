@@ -1,7 +1,8 @@
-from INDIGO.objects.buttons.button import Button
 from INDIGO.objects.engine_object import EngineObject
-from INDIGO.objects.shapes import Rect
+
 from INDIGO.exceptions import InvalidBorderButtonError
+from INDIGO.objects.buttons.button import Button
+from INDIGO.objects.shapes import Rect
 
 
 class Button_With_Borders(EngineObject):

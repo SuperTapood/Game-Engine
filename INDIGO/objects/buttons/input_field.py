@@ -1,5 +1,6 @@
-from INDIGO.objects.buttons.text_button import Text_Button
 from INDIGO.objects.engine_object import EngineObject
+
+from INDIGO.objects.buttons.text_button import Text_Button
 
 
 class InputField(EngineObject):

@@ -16,4 +16,3 @@ class exception(Exception):
 		return str
 	pass
 """
-

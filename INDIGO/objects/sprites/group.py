@@ -1,6 +1,6 @@
+from INDIGO.collision import group_group_collision, sprite_group_collision
 from INDIGO.exceptions import CollideTypeError
 from INDIGO.exceptions import GroupAddError
-from INDIGO.collision import group_group_collision, sprite_group_collision
 
 
 class Group:

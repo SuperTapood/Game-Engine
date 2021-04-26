@@ -1,6 +1,5 @@
-from pygame.draw import line
-
 from INDIGO.objects.engine_object import EngineObject
+from pygame.draw import line
 
 
 class Line(EngineObject):

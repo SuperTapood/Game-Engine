@@ -1,6 +1,5 @@
-from pygame.draw import rect
-
 from INDIGO.objects.engine_object import EngineObject
+from pygame.draw import rect
 
 
 class Rect(EngineObject):
