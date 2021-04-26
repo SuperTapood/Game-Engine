@@ -1,2 +1,2 @@
 class Circle:
-	pass
+    pass

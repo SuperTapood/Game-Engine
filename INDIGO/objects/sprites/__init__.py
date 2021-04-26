@@ -1,3 +1,3 @@
-from .group       import Group
+from .group import Group
 from .placeholder import Placeholder
-from .player      import Player
+from .player import Player
