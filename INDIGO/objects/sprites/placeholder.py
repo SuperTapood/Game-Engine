@@ -1,13 +1,13 @@
 from inspect import signature
 
-from .engine_object import Engine_Object
-from ..exceptions import CollideTypeError
-from ..exceptions import InvalidDeployableError
-from ..exceptions import PlaceholderBlitError
-from ...collision import sprite_sprite_collision, sprite_group_collision
+from INDIGO.objects.engine_object import EngineObject
+from INDIGO.exceptions import CollideTypeError
+from INDIGO.exceptions import InvalidDeployableError
+from INDIGO.exceptions import PlaceholderBlitError
+from INDIGO.collision import sprite_sprite_collision, sprite_group_collision
 
 
-class Placeholder(Engine_Object):
+class Placeholder(EngineObject):
     def __init__(self, scr, img, x=None, y=None, delpoyable=Placeholder):
         self.scr = scr
         self.img = img
@@ -36,7 +36,7 @@ class Placeholder(Engine_Object):
         if hasattr(other, "object_type"):
             if other.object_type == "Group":
                 sprite_group_collision(self, other, resp)
-            elif other.object_type == "Engine_Object":
+            elif other.object_type == "EngineObject":
                 sprite_sprite_collision(self, other, resp)
             else:
                 raise CollideTypeError(type(other).__name__)

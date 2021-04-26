@@ -1,6 +1,6 @@
 from inspect import signature
 
-from ..exceptions import CollideResponseError, CollideTypeError
+from INDIGO.exceptions import CollideResponseError, CollideTypeError
 
 
 def check_valid_resp(resp):

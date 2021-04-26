@@ -9,7 +9,7 @@ from ..image import Image
 
 class Engine_Object:
     def __init__(self):
-        self.object_type = "Engine_Object"
+        self.object_type = "EngineObject"
         try:
             # if this is a img given object, make sure it has a valid image
             if type(self.img) == str:

@@ -1,9 +1,9 @@
-from .engine_object import Engine_Object
-from ..exceptions import CollideTypeError
-from ...collision import sprite_sprite_collision, sprite_group_collision
+from INDIGO.objects.engine_object import EngineObject
+from INDIGO.exceptions import CollideTypeError
+from INDIGO.collision import sprite_sprite_collision, sprite_group_collision
 
 
-class Player(Engine_Object):
+class Player(EngineObject):
     def __init__(self, scr, img, x, y):
         self.screen = scr
         self.x = x
@@ -52,7 +52,7 @@ class Player(Engine_Object):
         if hasattr(other, "object_type"):
             if other.object_type == "Group":
                 sprite_group_collision(self, other, resp)
-            elif other.object_type == "Engine_Object":
+            elif other.object_type == "EngineObject":
                 sprite_sprite_collision(self, other, resp)
             else:
                 raise CollideTypeError(type(other).__name__)

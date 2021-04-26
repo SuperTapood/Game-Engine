@@ -1,7 +1,7 @@
 import os
 
-from .exceptions import UnsupportedExtensionError
-from .image import Image
+from INDIGO.exceptions import UnsupportedExtensionError
+from INDIGO.image import Image
 
 sound_extensions = []
 video_extensions = []

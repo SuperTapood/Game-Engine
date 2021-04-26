@@ -1,12 +1,12 @@
-from .rect_collision import collision
-from .valid import check_valid_group, check_valid_resp
+from INDIGO.collision.rect_collision import collision
+from INDIGO.collision.valid import check_valid_group, check_valid_resp
 
 
 def sprite_sprite_collision(sprite1, sprite2, resp):
     # check for collision between sprite1 and sprite2 and then call resp
     # if they collided
     """
-    Engine_Object Sprite1, Sprite2 - sprites to check collision on
+    EngineObject Sprite1, Sprite2 - sprites to check collision on
     func resp - response to be called upon collision
     """
     check_valid_resp(resp)
@@ -18,7 +18,7 @@ def sprite_sprite_collision(sprite1, sprite2, resp):
 def sprite_group_collision(sprite, group, resp, dokill):
     # check every sprite in the group for collision with the sprite
     """
-    Engine_Object sprite, Group group - sprite/group to check collision on
+    EngineObject sprite, Group group - sprite/group to check collision on
     func resp - response to be called upon collision
     bool dokill - whether or not to kill the collided objects from the group
     """

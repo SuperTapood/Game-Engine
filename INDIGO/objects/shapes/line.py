@@ -1,9 +1,9 @@
 from pygame.draw import line
 
-from ..engine_object import Engine_Object
+from INDIGO.objects.engine_object import EngineObject
 
 
-class Line(Engine_Object):
+class Line(EngineObject):
     def __init__(self, start_x, start_y, end_x, end_y, width, color, scr):
         """
         num start_x, start_y, end_x, end_y - the locs of the two dots

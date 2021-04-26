@@ -1,2 +1,2 @@
-from .engine_object import Engine_Object
-from .label import Label
+from INDIGO.objects.engine_object import EngineObject
+from INDIGO.objects.label import Label

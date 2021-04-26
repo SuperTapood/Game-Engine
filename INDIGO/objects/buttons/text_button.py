@@ -1,9 +1,9 @@
-from .button import Button
-from ..engine_object import Engine_Object
-from ..label import Label
+from INDIGO.objects.buttons.button import Button
+from INDIGO.objects.engine_object import EngineObject
+from INDIGO.objects.label import Label
 
 
-class Text_Button(Engine_Object):
+class TextButton(EngineObject):
     def __init__(self, scr, txt, x, y, txt_size, txt_color, button_color, resp=lambda: None, button_width=0):
         """
         Screen scr - the screen object

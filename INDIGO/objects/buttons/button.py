@@ -1,6 +1,6 @@
 from pygame.draw import rect
 
-from .button_meta import Button_Meta
+from INDIGO.objects.buttons.button_meta import Button_Meta
 
 
 class Button(Button_Meta):

@@ -9,7 +9,7 @@ class Animation:
         self.scr = scr
         self.play_rate = play_rate
         self.images = self.get_all_images_from_path(path)
-        self.object_type = "Engine_Object"
+        self.object_type = "EngineObject"
         return
 
     def __iter__(self):

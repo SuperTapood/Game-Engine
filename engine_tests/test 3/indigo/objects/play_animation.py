@@ -3,7 +3,7 @@ import time
 
 class Play_Animation:
     def __init__(self, scr, images, play_rate, x, y):
-        self.object_type = "Engine_Object"
+        self.object_type = "EngineObject"
         self.scr = scr
         self.x = x
         self.y = y

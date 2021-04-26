@@ -1,9 +1,9 @@
 import pygame
 
-from .engine_object import Engine_Object
+from .engine_object import EngineObject
 
 
-class Label(Engine_Object):
+class Label(EngineObject):
     def __init__(self, scr, txt, x, y, font_size, color, font="freesansbold.ttf"):
         self.scr = scr
         self.txt = txt

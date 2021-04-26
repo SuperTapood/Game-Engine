@@ -1,9 +1,9 @@
 from pygame.draw import rect
 
-from ..engine_object import Engine_Object
+from INDIGO.objects.engine_object import EngineObject
 
 
-class Rect(Engine_Object):
+class Rect(EngineObject):
     def __init__(self, scr, color, x, y, w, h, width=0):
         """
         Screen scr - the screen object

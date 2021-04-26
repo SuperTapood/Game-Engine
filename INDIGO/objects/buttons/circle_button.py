@@ -1,8 +1,8 @@
-from .button_meta import Button_Meta
-from ..shapes import Circle
+from INDIGO.objects.buttons.button_meta import ButtonMeta
+from INDIGO.objects.shapes import Circle
 
 
-class Circle_Button(Button_Meta):
+class CircleButton(ButtonMeta):
     def __init__(self, scr, color, x, y, radius, resp=lambda: None, width=0, delay_time=0.3):
         """
         Screen scr - the screen object

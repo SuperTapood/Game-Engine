@@ -2,10 +2,10 @@ from time import time
 
 from pygame.mouse import get_pressed, get_pos
 
-from ..engine_object import Engine_Object
+from INDIGO.objects.engine_object import EngineObject
 
 
-class Button_Meta(Engine_Object):
+class ButtonMeta(EngineObject):
     last_click = time()
 
     def check_click(self):

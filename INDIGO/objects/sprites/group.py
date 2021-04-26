@@ -1,6 +1,6 @@
-from ..exceptions import CollideTypeError
-from ..exceptions import GroupAddError
-from ...collision import group_group_collision, sprite_group_collision
+from INDIGO.exceptions import CollideTypeError
+from INDIGO.exceptions import GroupAddError
+from INDIGO.collision import group_group_collision, sprite_group_collision
 
 
 class Group:
@@ -42,7 +42,7 @@ class Group:
         try:
             if other.object_type == Group:
                 self.objects.multi_add(other.dismantle())
-            elif other.object_type == "Engine_Object":
+            elif other.object_type == "EngineObject":
                 self.objects.append(other)
         except AttributeError:
             raise GroupAddError(other, type(other))
@@ -95,7 +95,7 @@ class Group:
         if hasattr(other, "object_type"):
             if other.object_type == "Group":
                 group_group_collision(self, other, resp)
-            elif other.object_type == "Engine_Object":
+            elif other.object_type == "EngineObject":
                 sprite_group_collision(self, other, resp)
             else:
                 raise CollideTypeError(type(other).__name__)

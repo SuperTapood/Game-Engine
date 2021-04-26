@@ -5,11 +5,12 @@ import numpy as np
 
 # test spf and fps counter
 
-class Test_Counter:
+class TestCounter:
     def __init__(self):
         # ndarrays are like the lists bigger, better, cooler brother
         # and numpy is generally pretty cool
         self.times = np.array([])
+        self.time = None
         return
 
     def start(self):

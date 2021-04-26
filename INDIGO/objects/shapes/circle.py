@@ -1,9 +1,9 @@
 from pygame.draw import circle
 
-from ..engine_object import Engine_Object
+from INDIGO.objects.engine_object import EngineObject
 
 
-class Circle(Engine_Object):
+class Circle(EngineObject):
     def __init__(self, scr, color, pos, radius, width=0):
         """
         Screen scr - the screen object

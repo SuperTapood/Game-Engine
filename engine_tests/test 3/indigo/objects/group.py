@@ -40,7 +40,7 @@ class Group:
         try:
             if other.object_type == Group:
                 self.objects.multi_add(other.dismantle())
-            elif other.object_type == "Engine_Object":
+            elif other.object_type == "EngineObject":
                 self.objects.append(other)
         except AttributeError:
             raise GroupAddError(other, type(other))

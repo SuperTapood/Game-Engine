@@ -1,7 +1,7 @@
-from .button_meta import Button_Meta
+from INDIGO.objects.buttons.button_meta import ButtonMeta
 
 
-class Image_Button(Button_Meta):
+class ImageButton(ButtonMeta):
     def __init__(self, scr, img, x, y, resp=lambda: None, delay_time=0.3):
         """
         Screen scr - the screen object

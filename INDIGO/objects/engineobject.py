@@ -1,14 +1,14 @@
 import inspect
 
-from ..image import Image
+from INDIGO.image import Image
 
 
-## this is seemingly useless, but this will handle collision later on ##
-## the engine object meta classes will talk to each other ##
-## to decide if a collision was made ##
+# this is seemingly useless, but this will handle collision later on ##
+# the engine object meta classes will talk to each other ##
+# to decide if a collision was made ##
 
-class Engine_Object:
-    object_type = "Engine_Object"
+class EngineObject:
+    object_type = "EngineObject"
 
     # we also got this sick useless function
     def get_attributes(self, output=False):

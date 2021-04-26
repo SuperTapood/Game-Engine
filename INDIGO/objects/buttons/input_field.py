@@ -1,8 +1,8 @@
-from .text_button import Text_Button
-from ..engine_object import Engine_Object
+from INDIGO.objects.buttons.text_button import Text_Button
+from INDIGO.objects.engine_object import EngineObject
 
 
-class Input_Field(Engine_Object):
+class InputField(EngineObject):
     def __init__(self, scr, x, y, txt_size, txt_color, button_color, max_len, delay_time=0.3):
         """
         Screen scr - the screen object
@@ -22,12 +22,11 @@ class Input_Field(Engine_Object):
     def get_text(self):
         # get the text and modify it for the text button
         if len(self.txt) == self.max_len:
-            out = self.txt
+            return self.txt
         elif len(self.txt) > self.max_len:
-            out = self.txt[:self.max_len]
+            return self.txt[:self.max_len]
         else:
-            out = self.txt + " " * (self.max_len - len(self.txt))
-        return out
+            return self.txt + " " * (self.max_len - len(self.txt))
 
     def blit(self):
         self.button.blit()

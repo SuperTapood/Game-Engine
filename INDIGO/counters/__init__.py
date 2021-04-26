@@ -1,2 +1,2 @@
-from .counter import Counter
-from .test_counter import Test_Counter
+from INDIGO.counters.counter import Counter
+from INDIGO.counters.test_counter import Test_Counter

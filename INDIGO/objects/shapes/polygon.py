@@ -1,9 +1,9 @@
 from pygame.draw import polygon
 
-from ..engine_object import Engine_Object
+from INDIGO.objects.engine_object import EngineObject
 
 
-class Polygon(Engine_Object):
+class Polygon(EngineObject):
     def __init__(self, scr, color, *points):
         """
         Screen scr - the screen object
