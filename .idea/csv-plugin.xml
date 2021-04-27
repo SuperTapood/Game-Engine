@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\INDIGO\collision\collisions.pyi">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\INDIGO\counters\test_counter.py">
           <value>
             <Attribute>
@@ -17,10 +24,24 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\INDIGO\engine_types.pyi">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\INDIGO\exceptions\__init__.py">
           <value>
             <Attribute>
               <option name="separator" value="&#9;" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\INDIGO\objects\buttons\button_with_borders.pyi">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>

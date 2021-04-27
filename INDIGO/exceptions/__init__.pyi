@@ -1,0 +1,9 @@
+CollideResponseError: Exception
+CollideTypeError: Exception
+GroupAddError: Exception
+InvalidBorderButtonError: Exception
+InvalidDeployableError: Exception
+NonKillableObjectError: Exception
+OverrideError: Exception
+PlaceholderBlitError: Exception
+UnsupportedExtensionError: Exception

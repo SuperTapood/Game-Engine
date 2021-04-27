@@ -9,7 +9,6 @@ class Screen:
         """
         # init pygame because it is needed for a few more things down the road
         pygame.init()
-        pygame.mixer.init()
         self.X = x
         self.Y = y
         self.MIDDLEX = x // 2
