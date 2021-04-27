@@ -1,4 +1,4 @@
-from INDIGO.objects.engine_object import EngineObject
+from INDIGO.objects.engineobject import EngineObject
 
 from INDIGO.collision import sprite_sprite_collision, sprite_group_collision
 from INDIGO.exceptions import CollideTypeError

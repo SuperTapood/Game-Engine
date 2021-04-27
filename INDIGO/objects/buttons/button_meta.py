@@ -1,6 +1,6 @@
 from time import time
 
-from INDIGO.objects.engine_object import EngineObject
+from INDIGO.objects.engineobject import EngineObject
 from pygame.mouse import get_pressed, get_pos
 
 

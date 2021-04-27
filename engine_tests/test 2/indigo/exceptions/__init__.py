@@ -1,18 +1,9 @@
-"""
-error frame:
-class exception(Exception):
-	-> this is where I'll provide an explanation to when the error will be raised <-
-	# create a class that acts like a REAL exception
-	# this is here to make the exception look WAYY better (removes the location where the exception was raised
-	i.e. main.GroupAddError)
-	__module__ = Exception.__module__
-	
-	# get the message that was raised with the exception
-	def __init__(self, msg):
-		self.msg = msg
-		return
-	def __str__(self):
-		# return the message that will be printed at the end of the exception
-		return str
-	pass
-"""
+from INDIGO.exceptions.collideResponseError import CollideResponseError
+from INDIGO.exceptions.collideTypeError import CollideTypeError
+from INDIGO.exceptions.groupAddError import GroupAddError
+from INDIGO.exceptions.invalidBorderButtonError import InvalidBorderButtonError
+from INDIGO.exceptions.invalidDeployableError import InvalidDeployableError
+from INDIGO.exceptions.nonkillableObjectError import NonKillableObjectError
+from INDIGO.exceptions.overrideError import OverrideError
+from INDIGO.exceptions.placeholderBlitError import PlaceholderBlitError
+from INDIGO.exceptions.unsupportedExtensionError import UnsupportedExtensionError

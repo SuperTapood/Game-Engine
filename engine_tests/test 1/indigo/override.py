@@ -1,4 +1,4 @@
-from .exceptions import OverrideError
+from INDIGO.exceptions import OverrideError
 
 
 def override(interface_class):

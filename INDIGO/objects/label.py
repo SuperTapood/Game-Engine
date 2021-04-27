@@ -1,6 +1,6 @@
 import pygame
 
-from .engine_object import EngineObject
+from INDIGO.objects.engineobject import EngineObject
 
 
 class Label(EngineObject):

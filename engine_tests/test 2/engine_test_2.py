@@ -10,18 +10,18 @@ import random
 
 import pygame
 
-from indigo import Animation
-from indigo import BLACK, WHITE
-from indigo import Group
-from indigo import Image
-from indigo import Label
-from indigo import Placeholder
-from indigo import Player
-from indigo import Screen
-from indigo import Test_Counter
-from indigo import group_group_collision
-from indigo import override
-from indigo import sprite_group_collision
+from INDIGO import Animation
+from INDIGO import BLACK, WHITE
+from INDIGO import Group
+from INDIGO import Image
+from INDIGO import Label
+from INDIGO import Placeholder
+from INDIGO import Player
+from INDIGO import Screen
+from INDIGO import Test_Counter
+from INDIGO import group_group_collision
+from INDIGO import override
+from INDIGO import sprite_group_collision
 
 
 # collision result functions

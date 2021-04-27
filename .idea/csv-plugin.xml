@@ -59,6 +59,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\INDIGO\objects\sprites\placeholder.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\engine_tests\test 1\engine_test_1.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\test.py">
           <value>
             <Attribute>

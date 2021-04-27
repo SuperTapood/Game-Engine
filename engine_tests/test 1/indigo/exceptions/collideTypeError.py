@@ -1,8 +1,7 @@
 class CollideTypeError(Exception):
     __module__ = Exception.__module__
 
-    # raised when the engine tries to call a collide response function with
-    # other then 2 arguments (collider1, collider2)
+    # raised when a non-group object is referd to as a group
     def __init__(self, non_group_type):
         self.non_group_type = non_group_type
         return

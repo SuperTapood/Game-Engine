@@ -1,4 +1,4 @@
-from INDIGO.objects.engine_object import EngineObject
+from INDIGO.objects.engineobject import EngineObject
 from pygame.draw import line
 
 
